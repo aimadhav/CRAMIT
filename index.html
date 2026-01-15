@@ -104,15 +104,21 @@
                 </div>
             </section>
 
-            <!-- Search Bar -->
-            <section class="search-section">
-                <div class="search-bar">
-                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8" />
-                        <path d="M21 21l-4.35-4.35" />
+            <!-- Quick Actions (More useful than search for 2-3 decks) -->
+            <section class="quick-actions">
+                <button class="quick-action-btn" onclick="addCards()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12h14" />
                     </svg>
-                    <input type="text" placeholder="Search decks or tags..." class="search-input" id="searchInput">
-                </div>
+                    Add Cards
+                </button>
+                <button class="quick-action-btn primary" onclick="startDailyMix()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4v5h5M20 20v-5h-5" />
+                        <path d="M20.49 9A9 9 0 005.64 5.64L4 4m16 16l-1.64-1.64A9 9 0 019 20.49" />
+                    </svg>
+                    Daily Mix
+                </button>
             </section>
 
             <!-- Your Decks Section -->

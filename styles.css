@@ -319,12 +319,12 @@ body {
 /* Atom Decoration */
 .atom-decoration {
     position: absolute;
-    right: -20px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 150px;
-    height: 150px;
-    opacity: 0.6;
+    width: 120px;
+    height: 120px;
+    opacity: 0.5;
     z-index: 1;
 }
 
@@ -539,12 +539,63 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: var(--spacing-md) var(--spacing-lg);
-    padding-bottom: calc(var(--spacing-lg) + env(safe-area-inset-bottom, 0));
-    background: linear-gradient(to top, var(--bg-primary) 60%, transparent);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    padding: 12px var(--spacing-lg);
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0));
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-subtle);
     z-index: 100;
+}
+
+/* ============================================
+   QUICK ACTIONS (Replaces Search)
+   ============================================ */
+.quick-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.quick-action-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 12px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-family);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.quick-action-btn:hover {
+    background-color: var(--bg-elevated);
+    border-color: var(--border-light);
+    color: var(--text-primary);
+}
+
+.quick-action-btn:active {
+    transform: scale(0.97);
+}
+
+.quick-action-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.quick-action-btn.primary {
+    background: linear-gradient(135deg, var(--purple-dark), var(--purple-primary));
+    border-color: transparent;
+    color: var(--text-primary);
+}
+
+.quick-action-btn.primary:hover {
+    background: var(--purple-light);
 }
 
 .nav-item {
@@ -577,11 +628,25 @@ body {
 
 .nav-item.active {
     color: var(--text-primary);
+    position: relative;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 4px;
+    background: var(--purple-primary);
+    border-radius: 4px;
+    box-shadow: 0 0 12px var(--purple-primary), 0 0 20px var(--purple-glow);
 }
 
 .nav-item.active svg {
     stroke: var(--text-primary);
-    fill: transparent;
+    fill: none;
 }
 
 /* ============================================

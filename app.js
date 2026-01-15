@@ -90,6 +90,27 @@ function openDeck(deckId) {
 }
 
 // ============================================
+// QUICK ACTIONS
+// ============================================
+function addCards() {
+    console.log('Opening Add Cards modal');
+    // Navigate to add cards screen or open modal
+    alert('Add Cards feature coming soon!');
+}
+
+function startDailyMix() {
+    console.log('Starting Daily Mix session');
+    // Start an interleaved session with all subjects
+    const btn = event.currentTarget;
+    btn.style.transform = 'scale(0.95)';
+
+    setTimeout(() => {
+        btn.style.transform = '';
+        alert('Daily Mix: Review cards from all your subjects!');
+    }, 100);
+}
+
+// ============================================
 // SESSION MANAGEMENT
 // ============================================
 function startSession(subject) {
