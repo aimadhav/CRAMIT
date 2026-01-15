@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CramIt - JEE Prep</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- MathJax for LaTeX Rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f1115; /* Deep dark bg */
+            color: #e2e8f0;
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+
+        /* Hide scrollbar for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Primary Gradient for Branding */
+        .primary-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+
+        /* Dark Mode Card Shadows */
+        .card-shadow {
+            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Animated Progress Ring */
+        .progress-ring {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        /* Card Transitions */
+        .card-enter {
+            animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* LaTeX Container */
+        .math-container {
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            overflow-x: auto;
+        }
+
+        /* Bottom Nav Active State */
+        .tab-active {
+            color: #8b5cf6;
+            position: relative;
+        }
+        .tab-active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background-color: #8b5cf6;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #8b5cf6;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col relative pb-28">
+
+    <!-- ==================== VIEW: HOME DASHBOARD ==================== -->
+    <div id="view-home" class="flex-1 flex flex-col overflow-y-auto transition-opacity duration-300">
+        
+        <!-- Header -->
+        <header class="px-6 pt-8 pb-4 flex justify-between items-center bg-[#0f1115]/80 backdrop-blur-md sticky top-0 z-40 border-b border-white/5">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-[#1a1d26] shadow-inner flex items-center justify-center border border-white/10 overflow-hidden relative">
+                    <!-- Brand Logo Placeholder -->
+                    <div class="absolute inset-0 bg-indigo-600/20 flex items-center justify-center">
+                        <i class="fas fa-bolt text-indigo-400"></i>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest leading-none mb-1">Welcome Back</p>
+                    <h1 class="text-xl font-extrabold text-white tracking-tight">CramIt <span class="text-indigo-500">.</span></h1>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 bg-[#1a1d26] px-3.5 py-1.5 rounded-2xl shadow-sm border border-white/10">
+                <span class="text-sm animate-pulse">🔥</span>
+                <span class="text-sm font-bold text-gray-200">12 Days</span>
+            </div>
+        </header>
+
+        <main class="px-6 space-y-7 mt-4 pb-24">
+            
+            <!-- Hero: The Master Global Queue -->
+            <!-- This aggregates all subject queues into one interleaved session -->
+            <section>
+                <div onclick="startSession()" class="primary-gradient rounded-[32px] p-7 text-white card-shadow relative overflow-hidden group cursor-pointer active:scale-[0.98] transition-all">
+                    <!-- Decorative Background -->
+                    <div class="absolute -right-6 -bottom-6 w-40 h-40 bg-white/10 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700"></div>
+                    <div class="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h2 class="text-2xl font-extrabold tracking-tight mb-1">Global Queue</h2>
+                                <p class="text-indigo-100/80 text-xs font-medium uppercase tracking-wider">Interleaved Daily Recall</p>
+                            </div>
+                            <div class="bg-black/20 px-3 py-1.5 rounded-xl backdrop-blur-md border border-white/10 flex items-center gap-2">
+                                <i class="far fa-clock text-xs"></i>
+                                <span class="text-xs font-bold">30 mins</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-end justify-between">
+                            <!-- Subject Indicators showing components of the global queue -->
+                            <div class="flex -space-x-3">
+                                <div class="w-9 h-9 rounded-full bg-[#1e293b] border-2 border-[#6366f1] flex items-center justify-center text-[10px] font-bold text-blue-400" title="Physics">P</div>
+                                <div class="w-9 h-9 rounded-full bg-[#1e293b] border-2 border-[#8b5cf6] flex items-center justify-center text-[10px] font-bold text-purple-400" title="Chemistry">C</div>
+                                <div class="w-9 h-9 rounded-full bg-[#1e293b] border-2 border-[#f43f5e] flex items-center justify-center text-[10px] font-bold text-red-400" title="Math">M</div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-4xl font-black tracking-tighter">42</p>
+                                <p class="text-[10px] font-bold uppercase text-indigo-100/70">Total Pending</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search / Filter -->
+            <section class="relative group">
+                <input type="text" placeholder="Search concepts, PYQs, or tags..." class="w-full bg-[#1a1d26] border border-white/5 rounded-2xl py-4 pl-12 pr-4 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all card-shadow placeholder-gray-600">
+                <i class="fas fa-search w-5 h-5 text-gray-500 absolute left-4 top-1/2 -translate-y-1/2 group-focus-within:text-indigo-400 transition-colors"></i>
+            </section>
+
+            <!-- Library Grid: Subject Specific Queues -->
+            <!-- Addresses user requirement: "global queue for each subject is different" -->
+            <section class="space-y-5">
+                <div class="flex justify-between items-end">
+                    <h3 class="text-lg font-extrabold text-white tracking-tight">Your Subjects</h3>
+                    <span class="text-xs font-bold text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded-lg">4 Active Decks</span>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-4">
+                    
+                    <!-- Physics Deck -->
+                    <div class="bg-[#1a1d26] p-5 rounded-3xl border border-white/5 card-shadow flex items-center justify-between group active:scale-95 transition-all cursor-pointer hover:border-blue-500/30">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-2xl text-blue-400 group-hover:scale-110 transition-transform border border-blue-500/20">⚛️</div>
+                            <div>
+                                <h4 class="font-bold text-gray-100">Physics Queue</h4>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span class="text-xs font-bold text-blue-400 bg-blue-400/10 px-1.5 py-0.5 rounded">12 Due</span>
+                                    <span class="text-[10px] text-gray-500">120 Total</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative w-12 h-12">
+                            <svg class="w-12 h-12 transform -rotate-90">
+                                <circle class="text-gray-800" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                                <circle class="text-blue-500 progress-ring" stroke-width="3" stroke-dasharray="125.6" stroke-dashoffset="40" stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                            </svg>
+                            <span class="absolute inset-0 flex items-center justify-center text-[10px] font-black text-gray-400">65%</span>
+                        </div>
+                    </div>
+
+                    <!-- Chemistry Deck -->
+                    <div class="bg-[#1a1d26] p-5 rounded-3xl border border-white/5 card-shadow flex items-center justify-between group active:scale-95 transition-all cursor-pointer hover:border-purple-500/30">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-2xl text-purple-400 group-hover:scale-110 transition-transform border border-purple-500/20">🧪</div>
+                            <div>
+                                <h4 class="font-bold text-gray-100">Chemistry Queue</h4>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span class="text-xs font-bold text-purple-400 bg-purple-400/10 px-1.5 py-0.5 rounded">8 Due</span>
+                                    <span class="text-[10px] text-gray-500">85 Total</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative w-12 h-12">
+                            <svg class="w-12 h-12 transform -rotate-90">
+                                <circle class="text-gray-800" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                                <circle class="text-purple-500 progress-ring" stroke-width="3" stroke-dasharray="125.6" stroke-dashoffset="80" stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                            </svg>
+                            <span class="absolute inset-0 flex items-center justify-center text-[10px] font-black text-gray-400">40%</span>
+                        </div>
+                    </div>
+
+                    <!-- Math Deck -->
+                    <div class="bg-[#1a1d26] p-5 rounded-3xl border border-white/5 card-shadow flex items-center justify-between group active:scale-95 transition-all cursor-pointer hover:border-red-500/30">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center text-2xl text-red-400 group-hover:scale-110 transition-transform border border-red-500/20">📐</div>
+                            <div>
+                                <h4 class="font-bold text-gray-100">Math Queue</h4>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span class="text-xs font-bold text-red-400 bg-red-400/10 px-1.5 py-0.5 rounded">22 Due</span>
+                                    <span class="text-[10px] text-gray-500">210 Total</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative w-12 h-12">
+                            <svg class="w-12 h-12 transform -rotate-90">
+                                <circle class="text-gray-800" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                                <circle class="text-red-500 progress-ring" stroke-width="3" stroke-dasharray="125.6" stroke-dashoffset="100" stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                            </svg>
+                            <span class="absolute inset-0 flex items-center justify-center text-[10px] font-black text-gray-400">20%</span>
+                        </div>
+                    </div>
+
+                    <!-- Bookmarks -->
+                    <div class="bg-indigo-900/10 p-5 rounded-3xl border border-indigo-500/20 flex items-center justify-between group active:scale-95 transition-all cursor-pointer">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-[#1a1d26] rounded-2xl border border-indigo-500/20 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">🔖</div>
+                            <div>
+                                <h4 class="font-bold text-indigo-300">Starred</h4>
+                                <p class="text-xs font-medium text-indigo-400/60 mt-0.5">15 Critical Concepts</p>
+                            </div>
+                        </div>
+                        <button class="bg-[#1a1d26] text-indigo-400 p-2.5 rounded-xl shadow-sm border border-indigo-500/20">
+                            <i class="fas fa-chevron-right text-xs"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ==================== BOTTOM NAVIGATION (Dark Mode) ==================== -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 pointer-events-none">
+        <!-- Floating Action Button Overlay (Pointer events enabled for button) -->
+        <div class="px-6 pb-6 pt-2 bg-gradient-to-t from-[#0f1115] to-transparent pointer-events-auto">
+            <button onclick="startSession()" class="w-full primary-gradient text-white py-5 rounded-[24px] font-extrabold text-lg shadow-2xl shadow-indigo-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-3 ring-1 ring-white/10">
+                <span class="text-xl">⚡</span> START TODAY'S RECALL
+            </button>
+        </div>
+
+        <!-- Tab Bar -->
+        <nav class="bg-[#161920]/95 backdrop-blur-xl border-t border-white/5 px-8 py-4 flex justify-between items-center pb-8 pointer-events-auto">
+            <button class="tab-active text-white flex flex-col items-center gap-1.5 transition-all">
+                <i class="fas fa-home text-lg"></i>
+                <span class="text-[9px] font-bold uppercase tracking-widest">Home</span>
+            </button>
+            <button class="text-gray-500 hover:text-white flex flex-col items-center gap-1.5 transition-colors">
+                <i class="fas fa-compass text-lg"></i>
+                <span class="text-[9px] font-bold uppercase tracking-widest">Explore</span>
+            </button>
+            <button class="text-gray-500 hover:text-white flex flex-col items-center gap-1.5 transition-colors">
+                <i class="fas fa-chart-pie text-lg"></i>
+                <span class="text-[9px] font-bold uppercase tracking-widest">Stats</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ==================== VIEW: STUDY SESSION (Hidden by default) ==================== -->
+    <div id="view-study" class="fixed inset-0 bg-[#0f1115] z-[100] flex flex-col hidden opacity-0 transition-opacity duration-300">
+        
+        <!-- Study Header -->
+        <div class="flex justify-between items-center p-6 pt-8 bg-[#0f1115]">
+            <button onclick="endSession()" class="text-gray-400 hover:text-white bg-[#1a1d26] w-10 h-10 rounded-full flex items-center justify-center border border-white/10"><i class="fas fa-times"></i></button>
+            <div class="flex flex-col items-center">
+                <span class="text-xs font-bold text-indigo-400 tracking-widest">GLOBAL QUEUE</span>
+                <span class="text-[10px] text-gray-500 font-medium">Physics • Electrostatics</span>
+            </div>
+            <button class="text-gray-400 hover:text-white bg-[#1a1d26] w-10 h-10 rounded-full flex items-center justify-center border border-white/10"><i class="fas fa-ellipsis-h"></i></button>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full h-1 bg-gray-800/50">
+            <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 w-[10%] transition-all duration-500"></div>
+        </div>
+
+        <!-- Card Container -->
+        <div class="flex-1 flex flex-col items-center justify-center p-6 relative">
+            
+            <!-- The Card -->
+            <div id="flashcard" class="w-full h-full max-h-[600px] bg-[#1a1d26] rounded-[32px] border border-white/5 shadow-2xl flex flex-col relative overflow-hidden card-enter">
+                
+                <!-- Bookmark (Absolute) -->
+                <button onclick="toggleBookmark(this)" class="absolute top-6 right-6 text-gray-600 hover:text-yellow-400 transition-colors z-10">
+                    <i class="fas fa-bookmark text-xl"></i>
+                </button>
+
+                <!-- Tags -->
+                <div class="absolute top-6 left-6 z-10 flex gap-2">
+                    <span class="text-[10px] bg-red-500/10 text-red-400 px-2.5 py-1 rounded-lg border border-red-500/20 font-bold tracking-wider">PYQ 2021</span>
+                    <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded-lg border border-blue-500/20 font-bold tracking-wider">HARD</span>
+                </div>
+
+                <!-- Card Content Area (Scrollable) -->
+                <div class="flex-1 overflow-y-auto p-8 pt-16 custom-scrollbar">
+                    
+                    <!-- Question -->
+                    <div id="card-question" class="mb-8">
+                        <h2 class="text-gray-500 text-[10px] uppercase tracking-[0.2em] font-bold mb-4">Question</h2>
+                        <p class="text-xl leading-relaxed text-gray-100 font-medium font-serif">
+                            Two point charges \( q_1 \) and \( q_2 \) are placed at a distance \( r \). What is the magnitude of the electrostatic force between them in a vacuum?
+                        </p>
+                        <!-- Image placeholder -->
+                        <div class="mt-6 w-full h-32 bg-black/20 rounded-2xl flex items-center justify-center border border-white/5 border-dashed group cursor-pointer hover:border-indigo-500/30 transition-colors">
+                             <div class="text-center">
+                                <i class="far fa-image text-gray-600 text-lg mb-1 block"></i>
+                                <span class="text-[10px] text-gray-600">Tap to view diagram</span>
+                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Answer (Hidden Initially) -->
+                    <div id="card-answer" class="hidden border-t border-white/10 pt-8 animate-pulse-once">
+                        <h2 class="text-indigo-400 text-[10px] uppercase tracking-[0.2em] font-bold mb-4">Answer</h2>
+                        <div class="math-container text-2xl text-white mb-4 font-serif">
+                            $$ F = k \frac{|q_1 q_2|}{r^2} $$
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Where \( k \) is Coulomb's constant \( k \approx 9 \times 10^9 \, \text{N}\cdot\text{m}^2/\text{C}^2 \).
+                        </p>
+                        
+                        <!-- Concept Revision -->
+                        <div class="mt-8 bg-indigo-500/10 p-5 rounded-2xl border border-indigo-500/20">
+                            <h4 class="text-indigo-300 font-bold text-sm mb-2 flex items-center gap-2">
+                                <i class="fas fa-lightbulb"></i> CramIt Key Concept
+                            </h4>
+                            <p class="text-xs text-indigo-100/70 leading-relaxed">The force is attractive if charges have opposite signs and repulsive if they have the same sign. It follows an inverse square law.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Fade -->
+                <div class="h-12 bg-gradient-to-t from-[#1a1d26] to-transparent pointer-events-none absolute bottom-0 w-full"></div>
+            </div>
+
+        </div>
+
+        <!-- Controls Area -->
+        <div class="p-6 pb-10 bg-[#0f1115]">
+            
+            <!-- State 1: Show Answer -->
+            <button id="btn-show" onclick="revealAnswer()" class="w-full bg-[#1a1d26] hover:bg-[#20242e] text-white font-bold py-5 rounded-[20px] shadow-lg border border-white/10 active:scale-[0.98] transition-all text-lg tracking-wide flex items-center justify-center gap-2 group">
+                <span>Show Answer</span>
+                <i class="fas fa-chevron-up text-xs text-gray-500 group-hover:-translate-y-1 transition-transform"></i>
+            </button>
+
+            <!-- State 2: Grading (Hidden) -->
+            <div id="grading-btns" class="hidden grid grid-cols-4 gap-3">
+                <button onclick="rateCard('again')" class="flex flex-col items-center justify-center bg-[#1a1d26] py-3 rounded-2xl border border-white/5 hover:border-red-500/50 hover:bg-red-500/10 active:scale-95 transition-all group">
+                    <span class="text-red-400 font-bold mb-1 text-sm">Again</span>
+                    <span class="text-[10px] text-gray-600 group-hover:text-red-300/70">< 1m</span>
+                </button>
+                <button onclick="rateCard('hard')" class="flex flex-col items-center justify-center bg-[#1a1d26] py-3 rounded-2xl border border-white/5 hover:border-orange-500/50 hover:bg-orange-500/10 active:scale-95 transition-all group">
+                    <span class="text-orange-400 font-bold mb-1 text-sm">Hard</span>
+                    <span class="text-[10px] text-gray-600 group-hover:text-orange-300/70">2d</span>
+                </button>
+                <button onclick="rateCard('good')" class="flex flex-col items-center justify-center bg-[#1a1d26] py-3 rounded-2xl border border-white/5 hover:border-green-500/50 hover:bg-green-500/10 active:scale-95 transition-all group">
+                    <span class="text-green-400 font-bold mb-1 text-sm">Good</span>
+                    <span class="text-[10px] text-gray-600 group-hover:text-green-300/70">4d</span>
+                </button>
+                <button onclick="rateCard('easy')" class="flex flex-col items-center justify-center bg-[#1a1d26] py-3 rounded-2xl border border-white/5 hover:border-blue-500/50 hover:bg-blue-500/10 active:scale-95 transition-all group">
+                    <span class="text-blue-400 font-bold mb-1 text-sm">Easy</span>
+                    <span class="text-[10px] text-gray-600 group-hover:text-blue-300/70">7d</span>
+                </button>
+            </div>
+            
+            <p id="learning-tip" class="hidden text-center text-[10px] text-gray-600 mt-4 uppercase tracking-widest font-bold">
+                Rate your recall honestly
+            </p>
+
+        </div>
+    </div>
+
+    <!-- Micro-Interaction Overlay (Loading Animation) -->
+    <div id="loader" class="fixed inset-0 bg-[#0f1115] z-[150] flex flex-col items-center justify-center gap-6 opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="w-20 h-20 primary-gradient rounded-3xl animate-bounce flex items-center justify-center shadow-2xl shadow-indigo-500/20">
+            <span class="text-4xl text-white">⚡</span>
+        </div>
+        <div class="text-center">
+            <h3 class="text-xl font-black text-white">Cramming Deck...</h3>
+            <p class="text-gray-500 text-sm font-medium">Selecting your best 30 cards</p>
+        </div>
+    </div>
+
+    <script>
+        // --- Bookmark Logic ---
+        function toggleBookmark(btn) {
+            const icon = btn.querySelector('i');
+            if (btn.classList.contains('text-yellow-400')) {
+                btn.classList.remove('text-yellow-400');
+                btn.classList.add('text-gray-600');
+                icon.classList.remove('fas'); // Solid
+                icon.classList.add('far'); // Hollow
+            } else {
+                btn.classList.add('text-yellow-400');
+                btn.classList.remove('text-gray-600');
+                icon.classList.remove('far'); // Hollow
+                icon.classList.add('fas'); // Solid
+            }
+        }
+
+        // --- Study Session Logic ---
+        function startSession(subject = 'global') {
+            const loader = document.getElementById('loader');
+            const viewHome = document.getElementById('view-home');
+            const viewStudy = document.getElementById('view-study');
+            const nav = document.querySelector('.fixed.bottom-0');
+            
+            // Show Loader
+            loader.classList.remove('opacity-0', 'pointer-events-none');
+            
+            // Artificial delay to simulate "Algorithm Crunching"
+            setTimeout(() => {
+                loader.classList.add('opacity-0', 'pointer-events-none');
+                
+                // Switch Views
+                viewHome.classList.add('hidden');
+                nav.classList.add('hidden');
+                viewStudy.classList.remove('hidden');
+                
+                // Trigger MathJax re-render
+                if(window.MathJax) {
+                    MathJax.typesetPromise();
+                }
+
+                setTimeout(() => {
+                    viewStudy.style.opacity = '1';
+                }, 50);
+
+                console.log(`Started ${subject} session`);
+            }, 1200);
+        }
+
+        function endSession() {
+            const viewHome = document.getElementById('view-home');
+            const viewStudy = document.getElementById('view-study');
+            const nav = document.querySelector('.fixed.bottom-0');
+            
+            viewStudy.style.opacity = '0';
+            
+            setTimeout(() => {
+                viewStudy.classList.add('hidden');
+                viewHome.classList.remove('hidden');
+                nav.classList.remove('hidden');
+                
+                // Reset card state for next time
+                resetCardState();
+                
+                setTimeout(() => {
+                    viewHome.style.opacity = '1';
+                }, 50);
+            }, 300);
+        }
+
+        function revealAnswer() {
+            const answerDiv = document.getElementById('card-answer');
+            const showBtn = document.getElementById('btn-show');
+            const gradingBtns = document.getElementById('grading-btns');
+            const tip = document.getElementById('learning-tip');
+            
+            answerDiv.classList.remove('hidden');
+            showBtn.classList.add('hidden');
+            gradingBtns.classList.remove('hidden');
+            gradingBtns.classList.add('grid');
+            tip.classList.remove('hidden');
+            
+            // Auto scroll to answer
+            const cardContainer = document.querySelector('.custom-scrollbar');
+            setTimeout(() => {
+                cardContainer.scrollTo({
+                    top: cardContainer.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+
+        function rateCard(rating) {
+            console.log("User rated:", rating);
+            
+            const card = document.getElementById('flashcard');
+            
+            // Swipe animation based on rating
+            let rotate = rating === 'again' ? -10 : 10;
+            let translate = rating === 'again' ? -100 : 100;
+            
+            card.style.transition = "transform 0.4s ease, opacity 0.4s ease";
+            card.style.transform = `translateX(${translate}%) rotate(${rotate}deg)`;
+            card.style.opacity = "0";
+
+            // Reset and show next card (Simulated loop)
+            setTimeout(() => {
+                resetCardState();
+                card.style.transition = "none";
+                card.style.transform = "translateY(20px)"; // Reset pos
+                
+                setTimeout(() => {
+                    card.style.transition = "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease";
+                    card.style.transform = "translateY(0)";
+                    card.style.opacity = "1";
+                }, 50);
+                
+            }, 400);
+        }
+
+        function resetCardState() {
+            document.getElementById('card-answer').classList.add('hidden');
+            document.getElementById('btn-show').classList.remove('hidden');
+            document.getElementById('grading-btns').classList.add('hidden');
+            document.getElementById('grading-btns').classList.remove('grid');
+            document.getElementById('learning-tip').classList.add('hidden');
+            document.querySelector('.custom-scrollbar').scrollTop = 0;
+        }
+
+        // Initial MathJax Trigger
+        window.onload = function() {
+           if(window.MathJax) MathJax.typesetPromise();
+        };
+
+    </script>
+</body>
+</html>

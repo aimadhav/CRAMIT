@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cramit - Smart Flashcards</title>
+    <meta name="description" content="Master your subjects with spaced repetition flashcards">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 3L4 14H12L11 21L20 10H12L13 3Z" fill="url(#bolt-gradient)"
+                            stroke="url(#bolt-gradient)" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <defs>
+                            <linearGradient id="bolt-gradient" x1="4" y1="3" x2="20" y2="21"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#A78BFA" />
+                                <stop offset="1" stop-color="#7C3AED" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <span class="welcome-text">WELCOME BACK</span>
+                    <h1 class="brand-name">Cramit<span class="accent-dot">.</span></h1>
+                </div>
+            </div>
+            <div class="streak-badge">
+                <span class="streak-icon">🔥</span>
+                <span class="streak-count">12 Days</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Recommended Now Section -->
+            <section class="section">
+                <span class="section-label">RECOMMENDED NOW</span>
+
+                <!-- Hero Card -->
+                <div class="hero-card" id="heroCard">
+                    <div class="hero-content">
+                        <span class="retention-badge">
+                            <span class="badge-dot"></span>
+                            CRITICAL RETENTION
+                        </span>
+
+                        <h2 class="hero-title">Physics</h2>
+                        <p class="hero-subtitle">Electrostatics & Current</p>
+
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-value">15</span>
+                                <span class="stat-label">REVIEWS</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">~8m</span>
+                                <span class="stat-label">TIME</span>
+                            </div>
+                        </div>
+
+                        <button class="start-btn" onclick="startSession('physics')">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                            Start Physics
+                        </button>
+                    </div>
+
+                    <!-- Atom Decoration -->
+                    <div class="atom-decoration">
+                        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Orbits -->
+                            <ellipse cx="60" cy="60" rx="50" ry="20" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"
+                                transform="rotate(-30 60 60)" />
+                            <ellipse cx="60" cy="60" rx="50" ry="20" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"
+                                transform="rotate(30 60 60)" />
+                            <ellipse cx="60" cy="60" rx="50" ry="20" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"
+                                transform="rotate(90 60 60)" />
+                            <!-- Nucleus -->
+                            <circle cx="60" cy="60" r="8" fill="rgba(255,255,255,0.2)" />
+                            <!-- Electrons -->
+                            <circle cx="60" cy="10" r="4" fill="rgba(255,255,255,0.4)" class="electron electron-1" />
+                            <circle cx="100" cy="80" r="4" fill="rgba(255,255,255,0.4)" class="electron electron-2" />
+                            <circle cx="20" cy="80" r="4" fill="rgba(255,255,255,0.4)" class="electron electron-3" />
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search Bar -->
+            <section class="search-section">
+                <div class="search-bar">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21l-4.35-4.35" />
+                    </svg>
+                    <input type="text" placeholder="Search decks or tags..." class="search-input" id="searchInput">
+                </div>
+            </section>
+
+            <!-- Your Decks Section -->
+            <section class="section decks-section">
+                <span class="section-label">YOUR DECKS</span>
+
+                <div class="decks-grid">
+                    <!-- Chemistry Deck -->
+                    <div class="deck-card" onclick="openDeck('chemistry')">
+                        <div class="deck-icon chemistry-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 3v6l-4 8c-.7 1.3.2 3 1.7 3h10.6c1.5 0 2.4-1.7 1.7-3l-4-8V3"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M9 3h6" stroke-linecap="round" />
+                                <circle cx="10" cy="15" r="1" fill="currentColor" />
+                                <circle cx="14" cy="13" r="1" fill="currentColor" />
+                                <circle cx="12" cy="16" r="1" fill="currentColor" />
+                            </svg>
+                        </div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">Chemistry</h3>
+                            <span class="deck-status caught-up">All Caught Up</span>
+                        </div>
+                        <div class="deck-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Mathematics Deck -->
+                    <div class="deck-card" onclick="openDeck('mathematics')">
+                        <div class="deck-icon math-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="4" y="4" width="16" height="16" rx="2" stroke-linecap="round" />
+                                <path d="M8 8h2v2H8zM14 8h2v2h-2zM8 14h2v2H8zM14 14h2v2h-2z" fill="currentColor" />
+                            </svg>
+                        </div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">Mathematics</h3>
+                            <span class="deck-status has-due">22 Due</span>
+                        </div>
+                        <div class="deck-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Biology Deck -->
+                    <div class="deck-card full-width" onclick="openDeck('biology')">
+                        <div class="deck-icon biology-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path
+                                    d="M12 2C8 2 6 6 6 10c0 3 1.5 5 3 6v4a2 2 0 002 2h2a2 2 0 002-2v-4c1.5-1 3-3 3-6 0-4-2-8-6-8z"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M9 18h6" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div class="deck-info">
+                            <h3 class="deck-name">Biology</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item" onclick="switchTab('home')">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                </svg>
+                <span>HOME</span>
+            </button>
+            <button class="nav-item active" onclick="switchTab('explore')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z" />
+                </svg>
+                <span>EXPLORE</span>
+            </button>
+            <button class="nav-item" onclick="switchTab('stats')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                </svg>
+                <span>STATS</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

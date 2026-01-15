@@ -1,0 +1,661 @@
+/* ============================================
+   CRAMIT - Modern Flashcard App
+   Premium Dark Theme with Purple Accents
+   ============================================ */
+
+/* CSS Reset & Base */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --bg-primary: #0d0d0f;
+    --bg-secondary: #141417;
+    --bg-card: #1a1a1f;
+    --bg-elevated: #222228;
+
+    --purple-primary: #8B5CF6;
+    --purple-light: #A78BFA;
+    --purple-dark: #7C3AED;
+    --purple-glow: rgba(139, 92, 246, 0.3);
+
+    --coral-accent: #F97316;
+    --teal-accent: #14B8A6;
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-light: rgba(255, 255, 255, 0.12);
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+    --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* App Container */
+.app-container {
+    max-width: 430px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: var(--bg-primary);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    padding-top: var(--spacing-xl);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--purple-dark), var(--purple-primary));
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px var(--purple-glow);
+}
+
+.brand-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-text {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.accent-dot {
+    color: var(--purple-primary);
+}
+
+.streak-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--bg-secondary);
+    padding: 8px 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+}
+
+.streak-icon {
+    font-size: 14px;
+}
+
+.streak-count {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.main-content {
+    flex: 1;
+    padding: 0 var(--spacing-lg);
+    padding-bottom: 100px;
+    overflow-y: auto;
+}
+
+.section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+/* ============================================
+   HERO CARD (Physics Recommendation)
+   ============================================ */
+.hero-card {
+    background: linear-gradient(145deg, #2d1b4e 0%, #1e1235 50%, #1a0f2e 100%);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform var(--transition-fast), box-shadow var(--transition-normal);
+}
+
+.hero-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.15);
+}
+
+.hero-card:active {
+    transform: scale(0.98);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.retention-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(139, 92, 246, 0.2);
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--purple-light);
+    margin-bottom: var(--spacing-md);
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--purple-light);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.hero-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-stats {
+    display: flex;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.start-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--purple-primary);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 20px var(--purple-glow);
+}
+
+.start-btn:hover {
+    background: var(--purple-light);
+    box-shadow: 0 6px 28px var(--purple-glow);
+}
+
+.start-btn:active {
+    transform: scale(0.97);
+}
+
+.play-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Atom Decoration */
+.atom-decoration {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 150px;
+    height: 150px;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.atom-decoration svg {
+    width: 100%;
+    height: 100%;
+}
+
+.electron {
+    animation: orbit 3s linear infinite;
+    transform-origin: 60px 60px;
+}
+
+.electron-1 {
+    animation-delay: 0s;
+}
+
+.electron-2 {
+    animation-delay: -1s;
+}
+
+.electron-3 {
+    animation-delay: -2s;
+}
+
+@keyframes orbit {
+    from {
+        transform: rotate(0deg) translateX(0);
+    }
+
+    to {
+        transform: rotate(360deg) translateX(0);
+    }
+}
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+.search-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+    pointer-events: none;
+    transition: color var(--transition-fast);
+}
+
+.search-input {
+    width: 100%;
+    padding: 14px 16px 14px 48px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    font-size: 14px;
+    font-family: var(--font-family);
+    color: var(--text-primary);
+    outline: none;
+    transition: all var(--transition-fast);
+}
+
+.search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.search-input:focus {
+    border-color: var(--purple-primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.search-input:focus+.search-icon,
+.search-bar:focus-within .search-icon {
+    color: var(--purple-primary);
+}
+
+/* ============================================
+   DECKS GRID
+   ============================================ */
+.decks-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.decks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+.deck-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.deck-card:hover {
+    background-color: var(--bg-elevated);
+    border-color: var(--border-light);
+    transform: translateY(-2px);
+}
+
+.deck-card:active {
+    transform: scale(0.97);
+}
+
+.deck-card.full-width {
+    grid-column: span 1;
+}
+
+.deck-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.deck-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.chemistry-icon {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.1));
+    color: var(--purple-light);
+}
+
+.math-icon {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(249, 115, 22, 0.1));
+    color: var(--coral-accent);
+}
+
+.biology-icon {
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(20, 184, 166, 0.1));
+    color: var(--teal-accent);
+}
+
+.deck-info {
+    flex: 1;
+}
+
+.deck-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.deck-status {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.deck-status.caught-up {
+    color: var(--text-muted);
+}
+
+.deck-status.has-due {
+    color: var(--coral-accent);
+}
+
+.deck-arrow {
+    position: absolute;
+    right: var(--spacing-md);
+    bottom: var(--spacing-md);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.deck-arrow svg {
+    width: 16px;
+    height: 16px;
+}
+
+.deck-card:hover .deck-arrow {
+    opacity: 1;
+}
+
+/* ============================================
+   BOTTOM NAVIGATION
+   ============================================ */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 430px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    padding-bottom: calc(var(--spacing-lg) + env(safe-area-inset-bottom, 0));
+    background: linear-gradient(to top, var(--bg-primary) 60%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all var(--transition-fast);
+}
+
+.nav-item svg {
+    width: 22px;
+    height: 22px;
+}
+
+.nav-item span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+}
+
+.nav-item:hover {
+    color: var(--text-secondary);
+}
+
+.nav-item.active {
+    color: var(--text-primary);
+}
+
+.nav-item.active svg {
+    stroke: var(--text-primary);
+    fill: transparent;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--bg-elevated);
+    border-radius: var(--radius-full);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 380px) {
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-stats {
+        gap: var(--spacing-lg);
+    }
+
+    .stat-value {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 431px) {
+    .app-container {
+        border-left: 1px solid var(--border-subtle);
+        border-right: 1px solid var(--border-subtle);
+    }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.deck-card {
+    animation: fadeIn 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.deck-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.deck-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.deck-card:nth-child(3) {
+    animation-delay: 0.3s;
+}

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CramIt - Focus Mode</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Config for Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0F0F12', /* Deep dark */
+                        card: '#16161a', /* Slightly lighter card bg */
+                        primary: '#7c3aed', /* Violet 600 */
+                        secondary: '#1e1e24',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #050505;
+            /* Outer BG */
+            color: #ffffff;
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+
+        /* Mobile Container Constraint */
+        @media (min-width: 640px) {
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            #app-container {
+                width: 100%;
+                max-width: 390px;
+                height: 844px;
+                /* iPhone 12/13/14 Pro Height */
+                border-radius: 40px;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 0 0 10px #1a1a1a;
+            }
+        }
+
+        #app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #0a0a0c;
+            /* App BG */
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Custom Gradients */
+        .hero-gradient {
+            background: linear-gradient(145deg, #1c1c24 0%, #151519 100%);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(90deg, #7c3aed 0%, #6d28d9 100%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #a78bfa 0%, #c4b5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Nav Active Glow */
+        .nav-active {
+            color: #a78bfa;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app-container">
+
+        <!-- Header -->
+        <header class="px-6 pt-12 pb-6 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-10 h-10 rounded-xl bg-[#1e1e24] flex items-center justify-center shadow-lg border border-white/5">
+                    <i class="fas fa-bolt text-indigo-400 text-sm"></i>
+                </div>
+                <div>
+                    <p class="text-[9px] font-bold text-gray-500 uppercase tracking-widest leading-none mb-1">Welcome
+                        Back</p>
+                    <h1 class="text-xl font-bold text-white tracking-tight">Cramit<span class="text-indigo-500">.</span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="bg-[#1e1e24] border border-white/5 px-3 py-1.5 rounded-full flex items-center gap-2">
+                <i class="fas fa-fire text-amber-500 text-xs"></i>
+                <span class="text-xs font-bold text-gray-200">12 Days</span>
+            </div>
+        </header>
+
+        <main class="flex-1 px-5 space-y-8 overflow-y-auto no-scrollbar pb-24">
+
+            <!-- SECTION: HERO (Recommended Now) -->
+            <section>
+                <div class="flex justify-between items-end mb-3">
+                    <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Recommended Now</h3>
+                </div>
+
+                <div
+                    class="w-full bg-[#151518] rounded-[32px] p-6 relative overflow-hidden border border-white/5 shadow-2xl">
+
+                    <!-- Background Atom -->
+                    <i
+                        class="fas fa-atom absolute -right-6 top-1/2 -translate-y-1/2 text-[140px] text-[#2e1065] opacity-20 pointer-events-none"></i>
+
+                    <!-- Tag -->
+                    <div
+                        class="inline-flex items-center gap-1.5 bg-[#2e1065] border border-[#4c1d95] px-3 py-1.5 rounded-full mb-6 z-10 relative">
+                        <i class="fas fa-exclamation-circle text-[#a78bfa] text-[10px]"></i>
+                        <span class="text-[9px] font-bold text-[#e9d5ff] uppercase tracking-wide">Critical
+                            Retention</span>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="relative z-10">
+                        <h2 class="text-3xl font-bold text-white mb-1 tracking-tight">Physics</h2>
+                        <p class="text-gray-500 text-sm font-medium mb-6">Electrostatics & Current</p>
+
+                        <!-- Stats -->
+                        <div class="flex items-center gap-8 mb-6">
+                            <div>
+                                <p class="text-lg font-bold text-white leading-none">15</p>
+                                <p class="text-[9px] font-bold text-gray-600 uppercase mt-1">Reviews</p>
+                            </div>
+                            <!-- Vertical Divider -->
+                            <div class="w-px h-8 bg-white/5"></div>
+                            <div>
+                                <p class="text-lg font-bold text-white leading-none">~8m</p>
+                                <p class="text-[9px] font-bold text-gray-600 uppercase mt-1">Time</p>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <button
+                            class="w-full btn-gradient py-4 rounded-2xl flex items-center justify-center gap-2 border border-white/10 active:scale-[0.98] transition-transform shadow-lg shadow-indigo-900/20">
+                            <i class="fas fa-play text-white text-xs"></i>
+                            <span class="text-sm font-bold text-white">Start Physics</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: SEARCH -->
+            <section>
+                <div class="relative group">
+                    <input type="text" placeholder="Search decks or tags..."
+                        class="w-full bg-[#151518] border border-white/5 rounded-2xl py-4 pl-12 pr-4 text-sm text-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500/50 transition-all placeholder-gray-600 font-medium">
+                    <i
+                        class="fas fa-search w-4 h-4 text-gray-600 absolute left-5 top-1/2 -translate-y-1/2 group-focus-within:text-gray-400 transition-colors"></i>
+                </div>
+            </section>
+
+            <!-- SECTION: YOUR DECKS (Grid) -->
+            <section>
+                <div class="flex justify-between items-end mb-4">
+                    <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Your Decks</h3>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+
+                    <!-- Card 1: Chemistry -->
+                    <div
+                        class="bg-[#151518] p-5 rounded-[26px] border border-white/5 relative overflow-hidden group active:scale-[0.98] transition-all cursor-pointer hover:border-white/10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-[#1a2e25] flex items-center justify-center text-[#4ade80]">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-white text-[15px] mb-1">Chemistry</h4>
+                        <p class="text-[11px] font-bold text-gray-500 mb-4">All Caught Up</p>
+
+                        <div class="flex justify-end">
+                            <div
+                                class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-gray-500 text-[10px] group-hover:bg-white/10 group-hover:text-white transition-colors">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Mathematics -->
+                    <div
+                        class="bg-[#151518] p-5 rounded-[26px] border border-white/5 relative overflow-hidden group active:scale-[0.98] transition-all cursor-pointer hover:border-red-500/20">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-[#2e1a1a] flex items-center justify-center text-[#f87171]">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-white text-[15px] mb-1">Mathematics</h4>
+                        <p class="text-[11px] font-bold text-red-500 mb-4">22 Due</p>
+
+                        <div class="flex justify-end">
+                            <div
+                                class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-gray-500 text-[10px] group-hover:bg-white/10 group-hover:text-white transition-colors">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Biology (Full Width or Grid Item?) - Image implies Grid -->
+                    <div
+                        class="bg-[#151518] p-5 rounded-[26px] border border-white/5 relative overflow-hidden group active:scale-[0.98] transition-all cursor-pointer hover:border-white/10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-[#162438] flex items-center justify-center text-[#38bdf8]">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-white text-[15px] mb-1">Biology</h4>
+                        <!-- Faded ghost button/state as per implied "bottom" cutoff in image -->
+                        <div class="h-6"></div>
+                        <div class="absolute -bottom-6 -right-6 text-[80px] text-[#38bdf8] opacity-5 rotate-12">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                    </div>
+
+                    <!-- Add New (Placeholder to fill grid) -->
+                    <div
+                        class="bg-transparent p-5 rounded-[26px] border border-dashed border-white/10 flex flex-col items-center justify-center gap-2 group cursor-pointer hover:border-white/20 hover:bg-white/5 transition-all">
+                        <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400">
+                            <i class="fas fa-plus text-xs"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-gray-500">Add Subject</span>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav
+            class="absolute bottom-0 w-full bg-[#0a0a0c]/95 border-t border-white/5 flex justify-around items-center pt-4 pb-8 backdrop-blur-md z-40">
+            <button class="nav-active flex flex-col items-center gap-1.5 transition-all">
+                <i class="fas fa-home text-lg"></i>
+                <span class="text-[9px] font-bold uppercase tracking-widest">Home</span>
+            </button>
+            <button class="text-gray-600 hover:text-white flex flex-col items-center gap-1.5 transition-colors">
+                <i class="regular fa-compass text-lg"></i>
+                <span class="text-[9px] font-bold uppercase tracking-widest">Explore</span>
+            </button>
+            <button class="text-gray-600 hover:text-white flex flex-col items-center gap-1.5 transition-colors">
+                <i class="regular fa-chart-bar text-lg"></i>
+                <span class="text-[9px] font-bold uppercase tracking-widest">Stats</span>
+            </button>
+        </nav>
+
+    </div>
+
+</body>
+
+</html>
