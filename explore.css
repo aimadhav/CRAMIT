@@ -1,0 +1,124 @@
+/* EXPLORE PAGE - MINIMALIST REDESIGN */
+
+.explore-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 20px;
+}
+
+/* CHAPTER CARD */
+.chapter-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.chapter-card:hover {
+    background-color: var(--bg-elevated);
+    border-color: var(--border-light);
+    transform: translateY(-2px);
+}
+
+/* Left Gradient Strip */
+.chapter-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    /* Default color, overridden by state classes */
+    background: var(--border-subtle);
+}
+
+/* STATE: DONE */
+.chapter-card.done::before {
+    background: linear-gradient(to bottom, #10B981, #059669);
+    /* Emerald Green */
+    box-shadow: 2px 0 12px rgba(16, 185, 129, 0.3);
+}
+
+.chapter-card.done .chapter-status {
+    color: #10B981;
+}
+
+/* STATE: ACTIVE (Doing) */
+.chapter-card.active::before {
+    background: linear-gradient(to bottom, var(--purple-primary), var(--purple-dark));
+    box-shadow: 2px 0 15px var(--purple-glow);
+}
+
+.chapter-card.active .chapter-status {
+    color: var(--purple-light);
+    font-weight: 700;
+}
+
+/* STATE: LOCKED */
+.chapter-card.locked {
+    opacity: 0.7;
+}
+
+.chapter-card.locked::before {
+    background: var(--border-subtle);
+}
+
+/* CONTENT STYLES */
+.chapter-info {
+    flex: 1;
+}
+
+.chapter-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.chapter-sub-text {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.chapter-status {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: right;
+}
+
+/* Subject Tabs override or addition if needed */
+.subject-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+}
+
+.subject-tab {
+    padding: 8px 16px;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.subject-tab.active {
+    background: var(--bg-card);
+    border-color: var(--border-subtle);
+    color: var(--text-primary);
+}
