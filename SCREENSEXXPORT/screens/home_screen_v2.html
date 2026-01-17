@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>home_screen_v2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        :root {
+            --bg-main: #0B0C0E;
+            --bg-card: #15171B;
+            --bg-card-hover: #1E2025;
+            --primary-accent: #5E6AD2;
+            --primary-accent-hover: #4F5BB6;
+            --text-primary: #ECECEC;
+            --text-secondary: #94969A;
+            --text-tertiary: #5F6166;
+            --border-subtle: #2A2C32;
+            --status-critical: #D25E5E;
+            --status-success: #3FB950;
+            --status-warning: #D2995E;
+            --nav-bg: rgba(11, 12, 14, 0.95);
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .iphone-frame {
+            width: 393px;
+            height: 852px;
+            background-color: var(--bg-main);
+            position: relative;
+            border-radius: 40px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-primary);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .glass-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-item.active {
+            color: var(--text-primary);
+        }
+
+        .nav-item.active iconify-icon {
+            color: var(--primary-accent);
+            filter: drop-shadow(0 0 8px rgba(94, 106, 210, 0.4));
+        }
+    </style>
+</head>
+
+<body><!-- #iphone-frame_home -->
+    <div class="iphone-frame"><!-- #header-section_001 -->
+        <header class="flex items-center justify-between px-6 pt-12 pb-4">
+            <div class="flex flex-col">
+                <h1 class="text-xl font-bold tracking-tight text-[var(--text-primary)]"><span
+                        class="text-[var(--primary-accent)]">✦</span> Cramit.</h1>
+                <p class="text-xs text-[var(--text-secondary)] mt-0.5">Ready to revise, Arjun?</p>
+            </div>
+            <div
+                class="flex items-center gap-1.5 bg-[var(--bg-card)] border border-[var(--border-subtle)] px-3 py-1.5 rounded-full">
+                <iconify-icon class="text-[var(--status-warning)] text-lg" icon="ph:fire-fill"></iconify-icon><span
+                    class="text-sm font-semibold">12 Days</span>
+            </div>
+        </header><!-- /#header-section_001 --><!-- #scrollable-content_002 -->
+        <div class="flex-1 overflow-y-auto no-scrollbar px-5 pb-24"><!-- #primary-recommendation_003 -->
+            <section class="mt-4">
+                <div class="flex justify-between items-baseline mb-3">
+                    <h2 class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide">Recommended Now
+                    </h2>
+                </div><!-- #main-card_004 -->
+                <div class="glass-panel rounded-3xl p-6 relative overflow-hidden group">
+                    <div
+                        class="absolute -right-10 -top-10 w-40 h-40 bg-[var(--primary-accent)] opacity-5 blur-3xl rounded-full pointer-events-none">
+                    </div>
+                    <div class="flex items-center gap-2 mb-5"><span
+                            class="bg-[#2D2B4A] text-[#8E96FF] text-[10px] font-bold px-2 py-1 rounded-md border border-[#3E3C66] tracking-wide uppercase">Critical
+                            Retention</span><span
+                            class="text-[10px] text-[var(--text-tertiary)] flex items-center gap-1"><iconify-icon
+                                icon="ph:brain"></iconify-icon> High Priority</span></div>
+                    <div class="mb-6">
+                        <div class="flex items-center gap-3 mb-1">
+                            <h3 class="text-3xl font-bold text-white tracking-tight">Physics</h3>
+                        </div>
+                        <p class="text-[var(--text-secondary)] text-sm">Electrostatics &amp; Current Electricity</p>
+                    </div>
+                    <div class="flex items-center gap-6 mb-6">
+                        <div class="flex flex-col"><span
+                                class="text-[var(--text-tertiary)] text-[10px] font-semibold uppercase">Reviews</span><span
+                                class="text-lg font-medium text-white flex items-center gap-1"><iconify-icon
+                                    class="text-[var(--primary-accent)] text-sm" icon="ph:cards-fill"></iconify-icon>
+                                15</span></div>
+                        <div class="w-px h-8 bg-[var(--border-subtle)]"></div>
+                        <div class="flex flex-col"><span
+                                class="text-[var(--text-tertiary)] text-[10px] font-semibold uppercase">Est.
+                                Time</span><span
+                                class="text-lg font-medium text-white flex items-center gap-1"><iconify-icon
+                                    class="text-[var(--primary-accent)] text-sm" icon="ph:clock-fill"></iconify-icon>
+                                ~8m</span></div>
+                    </div><button
+                        class="w-full bg-[var(--primary-accent)] hover:bg-[var(--primary-accent-hover)] active:scale-[0.98] transition-all text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-[#5E6AD2]/20"><iconify-icon
+                            icon="ph:play-fill"></iconify-icon> Start Revision</button>
+                </div><!-- /#main-card_004 -->
+            </section><!-- /#primary-recommendation_003 --><!-- #secondary-queues_005 -->
+            <section class="mt-8">
+                <h2 class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-3">Other Subject
+                    Queues</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-panel rounded-2xl p-4 active:scale-[0.98] transition-transform">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-[#1A1F1C] flex items-center justify-center text-[#4CD964] mb-3 border border-[#232925]">
+                            <iconify-icon icon="ph:flask-fill"></iconify-icon>
+                        </div>
+                        <h4 class="font-semibold text-base mb-1">Chemistry</h4>
+                        <div class="flex items-center justify-between mt-3"><span
+                                class="text-xs text-[var(--text-secondary)]">22 Due</span><span
+                                class="text-xs font-mono text-[var(--text-tertiary)]">~12m</span></div><button
+                            class="w-full mt-3 bg-[var(--border-subtle)] h-8 rounded-lg text-xs font-medium text-[var(--text-secondary)] hover:text-white transition-colors">Revise</button>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 active:scale-[0.98] transition-transform">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-[#1F1A1B] flex items-center justify-center text-[#FF5F57] mb-3 border border-[#2E2324]">
+                            <iconify-icon icon="ph:function-fill"></iconify-icon>
+                        </div>
+                        <h4 class="font-semibold text-base mb-1">Maths</h4>
+                        <div class="flex items-center justify-between mt-3"><span
+                                class="text-xs text-[var(--text-tertiary)]">Waitlist</span><span
+                                class="text-xs font-mono text-[var(--status-success)]">Done</span></div><button
+                            class="w-full mt-3 bg-[var(--border-subtle)] h-8 rounded-lg text-xs font-medium text-[var(--text-tertiary)] cursor-not-allowed opacity-50">Caught
+                            Up</button>
+                    </div>
+                </div>
+            </section><!-- /#secondary-queues_005 --><!-- #stats-heatmap-combo_006 -->
+            <section class="mt-8">
+                <h2 class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-3">Today's
+                    Performance</h2>
+                <div class="glass-panel rounded-2xl p-5 mb-4">
+                    <div class="grid grid-cols-3 gap-4 text-center divide-x divide-[var(--border-subtle)]">
+                        <div class="flex flex-col items-center gap-1"><span
+                                class="text-2xl font-bold text-white">42</span><span
+                                class="text-[10px] uppercase font-semibold text-[var(--text-tertiary)] tracking-wider">Revised</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1"><span
+                                class="text-2xl font-bold text-[var(--status-warning)]">37</span><span
+                                class="text-[10px] uppercase font-semibold text-[var(--text-tertiary)] tracking-wider">Due</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1"><span
+                                class="text-2xl font-bold text-[var(--status-critical)]">5</span><span
+                                class="text-[10px] uppercase font-semibold text-[var(--text-tertiary)] tracking-wider">Backlog</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between px-1"><span
+                        class="text-xs text-[var(--text-tertiary)] font-medium">Last 7 Days</span>
+                    <div class="flex gap-1.5">
+                        <div class="w-6 h-6 rounded bg-[var(--border-subtle)] flex items-center justify-center"><span
+                                class="text-[8px] text-[var(--text-tertiary)] opacity-0">M</span></div>
+                        <div class="w-6 h-6 rounded bg-[var(--primary-accent)] opacity-40"></div>
+                        <div class="w-6 h-6 rounded bg-[var(--primary-accent)] opacity-80"></div>
+                        <div class="w-6 h-6 rounded bg-[var(--primary-accent)]"></div>
+                        <div class="w-6 h-6 rounded bg-[var(--border-subtle)]"></div>
+                        <div class="w-6 h-6 rounded bg-[var(--primary-accent)] opacity-60"></div>
+                        <div class="w-6 h-6 rounded bg-[var(--primary-accent)] border border-white/20 shadow-sm"></div>
+                    </div>
+                </div>
+            </section><!-- /#stats-heatmap-combo_006 -->
+        </div><!-- /#scrollable-content_002 --><!-- #refined-nav_007 -->
+        <nav
+            class="absolute bottom-0 left-0 right-0 bg-[var(--nav-bg)] backdrop-blur-xl border-t border-[var(--border-subtle)] pb-8 pt-4 z-50">
+            <div class="flex justify-around items-end px-6"><!-- Home Item (Dominant) -->
+                <div class="nav-item active flex flex-col items-center gap-1.5 cursor-pointer">
+                    <div
+                        class="bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-2xl p-2.5 flex items-center justify-center shadow-lg shadow-[#000000]/20">
+                        <iconify-icon class="text-2xl transform transition-transform"
+                            icon="ph:house-fill"></iconify-icon>
+                    </div><span class="text-[10px] font-semibold tracking-tight">Home</span>
+                </div><!-- Library Item -->
+                <div
+                    class="nav-item flex flex-col items-center gap-1.5 cursor-pointer text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors pb-1">
+                    <iconify-icon class="text-2xl" icon="ph:books"></iconify-icon><span
+                        class="text-[10px] font-medium">Library</span>
+                </div><!-- Stats Item -->
+                <div
+                    class="nav-item flex flex-col items-center gap-1.5 cursor-pointer text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors pb-1">
+                    <iconify-icon class="text-2xl" icon="ph:chart-pie-slice"></iconify-icon><span
+                        class="text-[10px] font-medium">Stats</span>
+                </div>
+            </div>
+        </nav><!-- /#refined-nav_007 -->
+    </div><!-- /#iphone-frame_home -->
+</body>
+
+</html>

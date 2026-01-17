@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Quick Prep Builder - Ready</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        :root {
+            --bg-main: #0B0C0E;
+            --bg-card: #15171B;
+            --bg-card-hover: #1e2025;
+            --text-primary: #ECECEC;
+            --text-secondary: #94969A;
+            --text-tertiary: #5F6166;
+            --border-subtle: #2A2C32;
+            --primary-accent: #5e6ad2;
+            --primary-accent-hover: #4f5bb6;
+            --nav-bg: rgba(11, 12, 14, 0.95);
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .iphone-frame {
+            width: 393px;
+            height: 852px;
+            background-color: var(--bg-main);
+            position: relative;
+            border-radius: 40px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-primary);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .custom-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--text-tertiary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .chapter-row.selected .custom-checkbox {
+            border-color: var(--primary-accent);
+            background: var(--primary-accent);
+            color: white;
+        }
+
+        .chapter-row.selected {
+            background: #1E1B24;
+            border-color: rgba(94, 106, 210, 0.3);
+        }
+
+        .toggle-chip {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .toggle-chip.active {
+            background: var(--text-primary);
+            color: var(--bg-main);
+            border-color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        @keyframes pulse-subtle {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="iphone-frame">
+        <header class="px-6 pt-12 pb-2 bg-[var(--bg-main)] z-20 flex flex-col gap-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold tracking-tight text-[var(--text-primary)]">Quick Prep Builder</h1>
+                <div
+                    class="bg-[#2A2C32] px-2 py-1 rounded text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-wide">
+                    Cram Mode</div>
+            </div>
+            <div class="flex bg-[#1F2125] p-1 rounded-lg border border-[var(--border-subtle)]">
+                <div
+                    class="flex-1 bg-[var(--bg-card)] shadow-sm rounded-lg py-2 flex items-center justify-center border border-[var(--border-subtle)]">
+                    <span class="text-sm font-bold text-white">Physics</span>
+                </div>
+                <div class="flex-1 py-2 flex items-center justify-center opacity-60"><span
+                        class="text-sm font-medium text-[var(--text-secondary)]">Chem</span></div>
+                <div class="flex-1 py-2 flex items-center justify-center opacity-60"><span
+                        class="text-sm font-medium text-[var(--text-secondary)]">Maths</span></div>
+            </div>
+        </header>
+
+        <div class="px-6 py-4 border-b border-[var(--border-subtle)] bg-[var(--bg-main)] z-10">
+            <span class="text-[11px] font-bold uppercase text-[var(--text-tertiary)] tracking-widest block mb-3">1.
+                Select
+                Content Type</span>
+            <div class="flex flex-wrap gap-2">
+                <button class="toggle-chip active px-4 py-2 rounded-full text-xs flex items-center gap-2">
+                    <iconify-icon class="text-sm" icon="ph:function-fill"></iconify-icon> Formulas
+                </button>
+                <button class="toggle-chip px-4 py-2 rounded-full text-xs flex items-center gap-2">
+                    <iconify-icon class="text-sm" icon="ph:lightbulb"></iconify-icon> Concepts
+                </button>
+                <button class="toggle-chip active px-4 py-2 rounded-full text-xs flex items-center gap-2">
+                    <iconify-icon class="text-sm" icon="ph:files-fill"></iconify-icon> PYQs
+                </button>
+                <button class="toggle-chip px-4 py-2 rounded-full text-xs flex items-center gap-2">
+                    <iconify-icon class="text-sm" icon="ph:warning-circle"></iconify-icon> Mistakes
+                </button>
+            </div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto no-scrollbar px-6 pb-40 pt-4">
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-[11px] font-bold uppercase text-[var(--text-tertiary)] tracking-widest">2. Select
+                    Chapters (3)</span>
+                <button class="text-[11px] font-medium text-[var(--primary-accent)]">Clear All</button>
+            </div>
+            <div class="flex flex-col gap-2">
+                <div
+                    class="chapter-row selected flex items-center justify-between p-4 rounded-xl border border-[var(--border-subtle)] cursor-pointer">
+                    <div class="flex flex-col"><span class="text-sm font-bold text-[var(--text-primary)]">Kinematics
+                            1D</span><span class="text-[10px] text-[var(--text-secondary)]">Motion, Graphs,
+                            Velocity</span></div>
+                    <div class="custom-checkbox"><iconify-icon icon="ph:check-bold"></iconify-icon></div>
+                </div>
+                <div
+                    class="chapter-row flex items-center justify-between p-4 rounded-xl border border-[var(--border-subtle)] cursor-pointer hover:bg-[var(--bg-card-hover)]">
+                    <div class="flex flex-col"><span class="text-sm font-medium text-[var(--text-primary)]">Newton's
+                            Laws</span><span class="text-[10px] text-[var(--text-tertiary)]">Dynamics, Friction,
+                            Pulleys</span></div>
+                    <div class="custom-checkbox"></div>
+                </div>
+                <div
+                    class="chapter-row selected flex items-center justify-between p-4 rounded-xl border border-[var(--border-subtle)] cursor-pointer">
+                    <div class="flex flex-col"><span class="text-sm font-bold text-[var(--text-primary)]">Work, Power &
+                            Energy</span><span class="text-[10px] text-[var(--text-secondary)]">Conservation,
+                            Collisions</span></div>
+                    <div class="custom-checkbox"><iconify-icon icon="ph:check-bold"></iconify-icon></div>
+                </div>
+                <div
+                    class="chapter-row selected flex items-center justify-between p-4 rounded-xl border border-[var(--border-subtle)] cursor-pointer">
+                    <div class="flex flex-col"><span class="text-sm font-bold text-[var(--text-primary)]">Rotational
+                            Motion</span><span class="text-[10px] text-[var(--text-secondary)]">Torque, Inertia,
+                            Rolling</span></div>
+                    <div class="custom-checkbox"><iconify-icon icon="ph:check-bold"></iconify-icon></div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="absolute bottom-0 left-0 right-0 bg-[var(--nav-bg)] backdrop-blur-xl border-t border-[var(--border-subtle)] z-50">
+            <div class="px-6 pt-4 pb-4">
+                <button
+                    class="w-full bg-[var(--primary-accent)] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-[var(--primary-accent)]/20 transition-all"
+                    style="animation: pulse-subtle 2s infinite;">
+                    <iconify-icon icon="ph:lightning-fill"></iconify-icon>
+                    <span>Start Cramming • 3 Chps</span>
+                </button>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <nav class="h-[88px] flex items-start justify-between px-8">
+                <!-- Library (Active) -->
+                <a href="#"
+                    class="flex flex-col items-center gap-1 mt-3 w-16 text-[var(--primary-accent)] transition-colors">
+                    <iconify-icon class="text-2xl" icon="ph:books-fill"></iconify-icon>
+                    <span class="text-[10px] font-bold">Library</span>
+                </a>
+
+                <!-- Home (Center & Raised) -->
+                <a href="../../../index.html" class="flex flex-col items-center justify-center -mt-6 cursor-pointer">
+                    <div
+                        class="w-14 h-14 bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-2xl flex items-center justify-center shadow-lg transform transition-transform hover:-translate-y-1">
+                        <iconify-icon class="text-2xl text-[var(--text-secondary)]" icon="ph:house-fill"></iconify-icon>
+                    </div>
+                    <span class="text-[10px] font-medium text-[var(--text-secondary)] mt-1.5">Home</span>
+                </a>
+
+                <!-- Stats -->
+                <a href="#"
+                    class="flex flex-col items-center gap-1 mt-3 w-16 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors">
+                    <iconify-icon class="text-2xl" icon="ph:chart-pie-slice"></iconify-icon>
+                    <span class="text-[10px] font-medium">Stats</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+</body>
+
+</html>

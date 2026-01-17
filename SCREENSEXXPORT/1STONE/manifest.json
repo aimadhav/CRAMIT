@@ -1,0 +1,57 @@
+{
+  "name": "Cramit: Smart Revision",
+  "exportedAt": "2026-01-17T10:26:14.103Z",
+  "screenCount": 10,
+  "screens": [
+    {
+      "id": "skeleton-onboarding_problem-1768636169670",
+      "name": "onboarding_problem",
+      "file": "screens/onboarding_problem.html"
+    },
+    {
+      "id": "skeleton-onboarding_solution-1768636194441",
+      "name": "onboarding_solution",
+      "file": "screens/onboarding_solution.html"
+    },
+    {
+      "id": "skeleton-onboarding_subjects-1768636195552",
+      "name": "onboarding_subjects",
+      "file": "screens/onboarding_subjects.html"
+    },
+    {
+      "id": "skeleton-onboarding_fomo-1768636210452",
+      "name": "onboarding_fomo",
+      "file": "screens/onboarding_fomo.html"
+    },
+    {
+      "id": "skeleton-paywall_pro-1768636237037",
+      "name": "paywall_pro",
+      "file": "screens/paywall_pro.html"
+    },
+    {
+      "id": "skeleton-home_dashboard-1768636314306",
+      "name": "home_dashboard",
+      "file": "screens/home_dashboard.html"
+    },
+    {
+      "id": "skeleton-library_browse-1768636340108",
+      "name": "library_browse",
+      "file": "screens/library_browse.html"
+    },
+    {
+      "id": "skeleton-library_chapter_modal-1768636359570",
+      "name": "library_chapter_modal",
+      "file": "screens/library_chapter_modal.html"
+    },
+    {
+      "id": "skeleton-stats_analytics-1768636372998",
+      "name": "stats_analytics",
+      "file": "screens/stats_analytics.html"
+    },
+    {
+      "id": "skeleton-home_dashboard_v2-1768636569501",
+      "name": "home_dashboard_v2",
+      "file": "screens/home_dashboard_v2.html"
+    }
+  ]
+}

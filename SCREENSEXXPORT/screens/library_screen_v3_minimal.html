@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>library_screen_v3_minimal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        :root {
+            --bg-main: #0B0C0E;
+            --bg-card: #15171B;
+            --bg-card-hover: #1E2025;
+            --primary-accent: #5E6AD2;
+            --text-primary: #ECECEC;
+            --text-secondary: #94969A;
+            --text-tertiary: #5F6166;
+            --border-subtle: #2A2C32;
+            --nav-bg: rgba(11, 12, 14, 0.95);
+            --tab-bg: #1F2125;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .iphone-frame {
+            width: 393px;
+            height: 852px;
+            background-color: var(--bg-main);
+            position: relative;
+            border-radius: 40px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-primary);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Minimal Hybrid Row */
+        .chapter-row {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.2s ease;
+        }
+
+        .chapter-row:active {
+            background: var(--bg-card-hover);
+            transform: scale(0.99);
+        }
+
+        .nav-item.active {
+            color: var(--text-primary);
+        }
+
+        .nav-item.active iconify-icon {
+            color: var(--primary-accent);
+            filter: drop-shadow(0 0 8px rgba(94, 106, 210, 0.4));
+        }
+    </style>
+</head>
+
+<body><!-- #iphone-frame_lib_minimal -->
+    <div class="iphone-frame"><!-- #header_lib_001 -->
+        <header class="px-5 pt-12 pb-2 bg-[var(--bg-main)] z-10 flex flex-col gap-4">
+            <div class="flex justify-between items-center mb-1">
+                <h1 class="text-2xl font-bold tracking-tight text-[var(--text-primary)]">Library</h1>
+                <!-- Subtle Search Trigger -->
+                <div class="text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]"><iconify-icon
+                        class="text-xl" icon="ph:magnifying-glass"></iconify-icon></div>
+            </div><!-- #subject-tabs_002 -->
+            <div class="flex bg-[var(--tab-bg)] p-1 rounded-xl mb-2"><!-- Tab: Physics (Active) -->
+                <div
+                    class="flex-1 bg-[var(--bg-card)] shadow-sm rounded-lg py-2 flex items-center justify-center gap-2 border border-[var(--border-subtle)]">
+                    <span class="text-sm font-semibold text-white tracking-wide">Physics</span>
+                </div>
+                <!-- Tab: Chemistry -->
+                <div class="flex-1 py-2 flex items-center justify-center gap-2 opacity-60 active:opacity-100"><span
+                        class="text-sm font-medium text-[var(--text-secondary)]">Chem</span></div><!-- Tab: Maths -->
+                <div class="flex-1 py-2 flex items-center justify-center gap-2 opacity-60 active:opacity-100"><span
+                        class="text-sm font-medium text-[var(--text-secondary)]">Maths</span></div>
+            </div><!-- /#subject-tabs_002 --><!-- #minimal-overview_003 -->
+            <!-- /#minimal-overview_003 -->
+            <div class="px-1 flex justify-between items-center">
+                <div class="flex items-center gap-2 text-xs font-medium text-[var(--text-secondary)]">
+                    <span class="text-[var(--text-tertiary)]">Subject Overview:</span>
+                    <span>24 Chapters</span>
+                </div>
+                <a href="library_screen_v4_balanced.html"
+                    class="text-[10px] font-bold text-[var(--primary-accent)] bg-[var(--primary-accent)]/10 px-2 py-1 rounded-md border border-[var(--primary-accent)]/20 hover:bg-[var(--primary-accent)]/20 transition-colors">SWITCH
+                    TO V4</a>
+            </div>
+            <!-- /#minimal-overview_003 -->
+            <!-- /#minimal-overview_003 -->
+        </header><!-- /#header_lib_001 --><!-- #content-area_lib_004 -->
+        <div class="flex-1 overflow-y-auto no-scrollbar px-5 pb-28 pt-2 space-y-2"><!-- Section: Mechanics -->
+            <div class="pt-4 pb-1 flex items-center gap-2">
+                <div class="h-px flex-1 bg-[var(--border-subtle)]"></div><span
+                    class="text-[10px] font-bold uppercase tracking-widest text-[var(--text-tertiary)]">Mechanics</span>
+                <div class="h-px flex-1 bg-[var(--border-subtle)]"></div>
+            </div><!-- #chapter-row_005 -->
+            <div class="chapter-row rounded-lg px-4 py-3.5 flex items-center justify-between group"><span
+                    class="text-[15px] font-medium text-[var(--text-primary)]">Kinematics 1D</span>
+                <div class="flex items-center gap-3"><span class="text-xs text-[var(--text-tertiary)]">12
+                        Due</span><iconify-icon class="text-[var(--text-tertiary)] text-sm"
+                        icon="ph:caret-right"></iconify-icon></div>
+            </div><!-- /#chapter-row_005 --><!-- #chapter-row_006 -->
+            <div class="chapter-row rounded-lg px-4 py-3.5 flex items-center justify-between group"><span
+                    class="text-[15px] font-medium text-[var(--text-primary)]">Newton's Laws</span>
+                <div class="flex items-center gap-3"><span class="text-xs text-[var(--text-tertiary)]">45%
+                        Done</span><iconify-icon class="text-[var(--text-tertiary)] text-sm"
+                        icon="ph:caret-right"></iconify-icon></div>
+            </div><!-- /#chapter-row_006 --><!-- #chapter-row_007 -->
+            <div class="chapter-row rounded-lg px-4 py-3.5 flex items-center justify-between group"><span
+                    class="text-[15px] font-medium text-[var(--text-primary)]">Work, Power &amp; Energy</span>
+                <div class="flex items-center gap-3"><span
+                        class="text-xs text-[var(--text-tertiary)]">Start</span><iconify-icon
+                        class="text-[var(--text-tertiary)] text-sm" icon="ph:caret-right"></iconify-icon></div>
+            </div><!-- /#chapter-row_007 --><!-- #chapter-row_008 -->
+            <div class="chapter-row rounded-lg px-4 py-3.5 flex items-center justify-between group"><span
+                    class="text-[15px] font-medium text-[var(--text-primary)]">Rotational Motion</span>
+                <div class="flex items-center gap-3"><span
+                        class="text-xs text-[var(--text-tertiary)]">Weak</span><iconify-icon
+                        class="text-[var(--text-tertiary)] text-sm" icon="ph:caret-right"></iconify-icon></div>
+            </div><!-- /#chapter-row_008 --><!-- Section: Electromagnetism -->
+            <div class="pt-6 pb-1 flex items-center gap-2">
+                <div class="h-px flex-1 bg-[var(--border-subtle)]"></div><span
+                    class="text-[10px] font-bold uppercase tracking-widest text-[var(--text-tertiary)]">Electromagnetism</span>
+                <div class="h-px flex-1 bg-[var(--border-subtle)]"></div>
+            </div><!-- #chapter-row_009 -->
+            <div class="chapter-row rounded-lg px-4 py-3.5 flex items-center justify-between group"><span
+                    class="text-[15px] font-medium text-[var(--text-primary)]">Electrostatics</span>
+                <div class="flex items-center gap-3"><span class="text-xs text-[var(--text-tertiary)]">8
+                        Due</span><iconify-icon class="text-[var(--text-tertiary)] text-sm"
+                        icon="ph:caret-right"></iconify-icon></div>
+            </div><!-- /#chapter-row_009 --><!-- #chapter-row_010 -->
+            <div class="chapter-row rounded-lg px-4 py-3.5 flex items-center justify-between group"><span
+                    class="text-[15px] font-medium text-[var(--text-primary)]">Current Electricity</span>
+                <div class="flex items-center gap-3"><span
+                        class="text-xs text-[var(--text-tertiary)]">Mastered</span><iconify-icon
+                        class="text-[var(--text-tertiary)] text-sm" icon="ph:caret-right"></iconify-icon></div>
+            </div><!-- /#chapter-row_010 --><!-- #chapter-row_011 -->
+            <div class="chapter-row rounded-lg px-4 py-3.5 flex items-center justify-between group"><span
+                    class="text-[15px] font-medium text-[var(--text-primary)]">Magnetism</span>
+                <div class="flex items-center gap-3"><span
+                        class="text-xs text-[var(--text-tertiary)]">Start</span><iconify-icon
+                        class="text-[var(--text-tertiary)] text-sm" icon="ph:caret-right"></iconify-icon></div>
+            </div><!-- /#chapter-row_011 --><!-- #chapter-row_012 -->
+            <div class="chapter-row rounded-lg px-4 py-3.5 flex items-center justify-between group"><span
+                    class="text-[15px] font-medium text-[var(--text-primary)]">EMI &amp; AC</span>
+                <div class="flex items-center gap-3"><span
+                        class="text-xs text-[var(--text-tertiary)]">Start</span><iconify-icon
+                        class="text-[var(--text-tertiary)] text-sm" icon="ph:caret-right"></iconify-icon></div>
+            </div><!-- /#chapter-row_012 -->
+        </div><!-- /#content-area_lib_004 --><!-- #nav_lib_013 -->
+        <!-- #bottom-nav_011 -->
+        <nav
+            class="absolute bottom-0 left-0 right-0 bg-[var(--nav-bg)] backdrop-blur-xl border-t border-[var(--border-subtle)] h-[88px] flex items-start justify-between px-8 z-50">
+            <!-- #nav-item-home_013 -->
+            <a href="../../index.html"
+                class="flex flex-col items-center gap-1 mt-3 w-16 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors">
+                <iconify-icon class="text-2xl" icon="ph:house-fill"></iconify-icon>
+                <span class="text-[10px] font-medium">Home</span>
+            </a>
+            <!-- /#nav-item-home_013 -->
+
+            <!-- #nav-item-library_012 (Active Raised) -->
+            <a href="#" class="flex flex-col items-center justify-center -mt-6 cursor-pointer">
+                <div
+                    class="w-14 h-14 bg-[var(--primary-accent)] rounded-2xl flex items-center justify-center shadow-lg shadow-[var(--primary-accent)]/30 transform hover:-translate-y-1 transition-transform">
+                    <iconify-icon class="text-2xl text-white" icon="ph:books"></iconify-icon>
+                </div>
+                <span class="text-[10px] font-bold text-[var(--text-primary)] mt-1.5">Library</span>
+            </a>
+            <!-- /#nav-item-library_012 -->
+
+            <!-- #nav-item-stats_014 -->
+            <a href="#"
+                class="flex flex-col items-center gap-1 mt-3 w-16 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors">
+                <iconify-icon class="text-2xl" icon="ph:chart-pie-slice"></iconify-icon>
+                <span class="text-[10px] font-medium">Stats</span>
+            </a>
+            <!-- /#nav-item-stats_014 -->
+        </nav>
+        <!-- /#bottom-nav_011 --><!-- /#nav_lib_013 -->
+    </div><!-- /#iphone-frame_lib_minimal -->
+</body>
+
+</html>

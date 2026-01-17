@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Quick Prep Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        :root {
+            --bg-main: #0B0C0E;
+            --bg-card: #15171B;
+            --bg-card-hover: #1e2025;
+            --text-primary: #ECECEC;
+            --text-secondary: #94969A;
+            --text-tertiary: #5F6166;
+            --border-subtle: #2A2C32;
+            --primary-accent: #5e6ad2;
+            --primary-accent-hover: #4f5bb6;
+            --nav-bg: rgba(11, 12, 14, 0.95);
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .iphone-frame {
+            width: 393px;
+            height: 852px;
+            background-color: var(--bg-main);
+            position: relative;
+            border-radius: 40px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-primary);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Custom Checkbox */
+        .custom-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--text-tertiary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .chapter-row.selected .custom-checkbox {
+            border-color: var(--primary-accent);
+            background: var(--primary-accent);
+            color: white;
+        }
+
+        .chapter-row.selected {
+            background: #1E1B24;
+            border-color: rgba(94, 106, 210, 0.3);
+        }
+
+        /* Toggle Chip */
+        .toggle-chip {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .toggle-chip.active {
+            background: var(--text-primary);
+            color: var(--bg-main);
+            border-color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        @keyframes pulse-subtle {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- #iphone-frame_builder_init -->
+    <div class="iphone-frame">
+        <!-- #header_builder_001 -->
+        <header class="px-6 pt-12 pb-2 bg-[var(--bg-main)] z-20 flex flex-col gap-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold tracking-tight text-[var(--text-primary)]">Quick Prep Builder</h1>
+                <div
+                    class="bg-[#2A2C32] px-2 py-1 rounded text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-wide">
+                    Cram Mode</div>
+            </div><!-- #subject-tabs_002 -->
+            <div class="flex bg-[#1F2125] p-1 rounded-lg border border-[var(--border-subtle)]">
+                <div
+                    class="flex-1 bg-[var(--bg-card)] shadow-sm rounded-lg py-2 flex items-center justify-center border border-[var(--border-subtle)]">
+                    <span class="text-sm font-bold text-white">Physics</span>
+                </div>
+                <div class="flex-1 py-2 flex items-center justify-center opacity-60"><span
+                        class="text-sm font-medium text-[var(--text-secondary)]">Chem</span></div>
+                <div class="flex-1 py-2 flex items-center justify-center opacity-60"><span
+                        class="text-sm font-medium text-[var(--text-secondary)]">Maths</span></div>
+            </div><!-- /#subject-tabs_002 -->
+        </header><!-- /#header_builder_001 --><!-- #config-panel_003 -->
+        <div class="px-6 py-4 border-b border-[var(--border-subtle)] bg-[var(--bg-main)] z-10">
+            <span class="text-[11px] font-bold uppercase text-[var(--text-tertiary)] tracking-widest block mb-3">1.
+                Select
+                Content Type</span>
+            <div id="content-chips" class="flex flex-wrap gap-2">
+                <button onclick="toggleChip(this)"
+                    class="toggle-chip px-4 py-2 rounded-full text-xs flex items-center gap-2">
+                    <iconify-icon class="text-sm" icon="ph:function"></iconify-icon> Formulas
+                </button>
+                <button onclick="toggleChip(this)"
+                    class="toggle-chip px-4 py-2 rounded-full text-xs flex items-center gap-2">
+                    <iconify-icon class="text-sm" icon="ph:lightbulb"></iconify-icon> Concepts
+                </button>
+                <button onclick="toggleChip(this)"
+                    class="toggle-chip px-4 py-2 rounded-full text-xs flex items-center gap-2">
+                    <iconify-icon class="text-sm" icon="ph:files"></iconify-icon> PYQs
+                </button>
+                <button onclick="toggleChip(this)"
+                    class="toggle-chip px-4 py-2 rounded-full text-xs flex items-center gap-2">
+                    <iconify-icon class="text-sm" icon="ph:warning-circle"></iconify-icon> Mistakes
+                </button>
+            </div>
+        </div><!-- /#config-panel_003 --><!-- #chapter-checklist_004 -->
+        <div class="flex-1 overflow-y-auto no-scrollbar px-6 pb-40 pt-4">
+            <div class="flex items-center justify-between mb-3">
+                <span id="chapter-count"
+                    class="text-[11px] font-bold uppercase text-[var(--text-tertiary)] tracking-widest">2. Select
+                    Chapters</span>
+                <button onclick="selectAllChapters()"
+                    class="text-[11px] font-medium text-[var(--primary-accent)]">Select All</button>
+            </div>
+            <div id="chapter-list" class="flex flex-col gap-2">
+                <!-- Chapter Row 1 -->
+                <div onclick="toggleChapter(this)"
+                    class="chapter-row flex items-center justify-between p-4 rounded-xl border border-[var(--border-subtle)] cursor-pointer hover:bg-[var(--bg-card-hover)] transition-colors">
+                    <div class="flex flex-col"><span class="text-sm font-medium text-[var(--text-primary)]">Kinematics
+                            1D</span><span class="text-[10px] text-[var(--text-tertiary)]">Motion, Graphs,
+                            Velocity</span></div>
+                    <div class="custom-checkbox"><iconify-icon class="hidden" icon="ph:check-bold"></iconify-icon></div>
+                </div><!-- Chapter Row 2 -->
+                <div onclick="toggleChapter(this)"
+                    class="chapter-row flex items-center justify-between p-4 rounded-xl border border-[var(--border-subtle)] cursor-pointer hover:bg-[var(--bg-card-hover)] transition-colors">
+                    <div class="flex flex-col"><span class="text-sm font-medium text-[var(--text-primary)]">Newton's
+                            Laws</span><span class="text-[10px] text-[var(--text-tertiary)]">Dynamics, Friction,
+                            Pulleys</span></div>
+                    <div class="custom-checkbox"><iconify-icon class="hidden" icon="ph:check-bold"></iconify-icon></div>
+                </div><!-- Chapter Row 3 -->
+                <div onclick="toggleChapter(this)"
+                    class="chapter-row flex items-center justify-between p-4 rounded-xl border border-[var(--border-subtle)] cursor-pointer hover:bg-[var(--bg-card-hover)] transition-colors">
+                    <div class="flex flex-col"><span class="text-sm font-medium text-[var(--text-primary)]">Work, Power
+                            & Energy</span><span class="text-[10px] text-[var(--text-tertiary)]">Conservation,
+                            Collisions</span></div>
+                    <div class="custom-checkbox"><iconify-icon class="hidden" icon="ph:check-bold"></iconify-icon></div>
+                </div><!-- Chapter Row 4 -->
+                <div onclick="toggleChapter(this)"
+                    class="chapter-row flex items-center justify-between p-4 rounded-xl border border-[var(--border-subtle)] cursor-pointer hover:bg-[var(--bg-card-hover)] transition-colors">
+                    <div class="flex flex-col"><span class="text-sm font-medium text-[var(--text-primary)]">Rotational
+                            Motion</span><span class="text-[10px] text-[var(--text-tertiary)]">Torque, Inertia,
+                            Rolling</span></div>
+                    <div class="custom-checkbox"><iconify-icon class="hidden" icon="ph:check-bold"></iconify-icon></div>
+                </div><!-- Chapter Row 5 -->
+                <div onclick="toggleChapter(this)"
+                    class="chapter-row flex items-center justify-between p-4 rounded-xl border border-[var(--border-subtle)] cursor-pointer hover:bg-[var(--bg-card-hover)] transition-colors">
+                    <div class="flex flex-col"><span
+                            class="text-sm font-medium text-[var(--text-primary)]">Gravitation</span><span
+                            class="text-[10px] text-[var(--text-tertiary)]">Kepler's Laws, Satellites</span></div>
+                    <div class="custom-checkbox"><iconify-icon class="hidden" icon="ph:check-bold"></iconify-icon></div>
+                </div>
+            </div>
+        </div><!-- /#chapter-checklist_004 -->
+
+        <!-- #footer_action_005 -->
+        <div
+            class="absolute bottom-0 left-0 right-0 bg-[var(--nav-bg)] backdrop-blur-xl border-t border-[var(--border-subtle)] z-50">
+            <div class="px-6 pt-4 pb-4">
+                <button id="start-btn" disabled
+                    class="w-full bg-[var(--border-subtle)] text-[var(--text-tertiary)] font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all cursor-not-allowed">
+                    <iconify-icon id="btn-icon" icon="ph:play-circle-fill"></iconify-icon>
+                    <span id="btn-text">Select Items to Start</span>
+                </button>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <nav class="h-[88px] flex items-start justify-between px-8">
+                <!-- Library (Active) -->
+                <a href="#"
+                    class="flex flex-col items-center gap-1 mt-3 w-16 text-[var(--primary-accent)] transition-colors">
+                    <iconify-icon class="text-2xl" icon="ph:books-fill"></iconify-icon>
+                    <span class="text-[10px] font-bold">Library</span>
+                </a>
+
+                <!-- Home (Center & Raised) -->
+                <a href="../../../index.html" class="flex flex-col items-center justify-center -mt-6 cursor-pointer">
+                    <div
+                        class="w-14 h-14 bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-2xl flex items-center justify-center shadow-lg transform transition-transform hover:-translate-y-1">
+                        <iconify-icon class="text-2xl text-[var(--text-secondary)]" icon="ph:house-fill"></iconify-icon>
+                    </div>
+                    <span class="text-[10px] font-medium text-[var(--text-secondary)] mt-1.5">Home</span>
+                </a>
+
+                <!-- Stats -->
+                <a href="#"
+                    class="flex flex-col items-center gap-1 mt-3 w-16 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors">
+                    <iconify-icon class="text-2xl" icon="ph:chart-pie-slice"></iconify-icon>
+                    <span class="text-[10px] font-medium">Stats</span>
+                </a>
+            </nav>
+        </div><!-- /#footer_action_005 -->
+    </div><!-- /#iphone-frame_builder_init -->
+
+    <script>
+        function toggleChip(el) {
+            el.classList.toggle('active');
+            updateState();
+        }
+
+        function toggleChapter(el) {
+            el.classList.toggle('selected');
+            const icon = el.querySelector('iconify-icon');
+            icon.classList.toggle('hidden');
+            updateState();
+        }
+
+        function selectAllChapters() {
+            const rows = document.querySelectorAll('.chapter-row');
+            const allSelected = Array.from(rows).every(row => row.classList.contains('selected'));
+
+            rows.forEach(row => {
+                const isSelected = row.classList.contains('selected');
+                if (allSelected) {
+                    row.classList.remove('selected');
+                    row.querySelector('iconify-icon').classList.add('hidden');
+                } else if (!isSelected) {
+                    row.classList.add('selected');
+                    row.querySelector('iconify-icon').classList.remove('hidden');
+                }
+            });
+            updateState();
+        }
+
+        function updateState() {
+            const activeChips = document.querySelectorAll('.toggle-chip.active').length;
+            const activeChapters = document.querySelectorAll('.chapter-row.selected').length;
+            const btn = document.getElementById('start-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnIcon = document.getElementById('btn-icon');
+            const countLabel = document.getElementById('chapter-count');
+
+            countLabel.textContent = `2. Select Chapters (${activeChapters})`;
+
+            if (activeChips > 0 && activeChapters > 0) {
+                btn.disabled = false;
+                btn.classList.remove('bg-[var(--border-subtle)]', 'text-[var(--text-tertiary)]', 'cursor-not-allowed');
+                btn.classList.add('bg-[var(--primary-accent)]', 'text-white');
+                btn.style.animation = 'pulse-subtle 2s infinite';
+                btnText.textContent = `Start Cramming • ${activeChapters} Chps`;
+                btnIcon.setAttribute('icon', 'ph:lightning-fill');
+            } else {
+                btn.disabled = true;
+                btn.classList.add('bg-[var(--border-subtle)]', 'text-[var(--text-tertiary)]', 'cursor-not-allowed');
+                btn.classList.remove('bg-[var(--primary-accent)]', 'text-white');
+                btn.style.animation = 'none';
+                btnText.textContent = 'Select Items to Start';
+                btnIcon.setAttribute('icon', 'ph:play-circle-fill');
+            }
+        }
+    </script>
+</body>
+
+</html>

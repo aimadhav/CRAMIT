@@ -1,235 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cramit - Smart Flashcards</title>
-    <meta name="description" content="Master your subjects with spaced repetition flashcards">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>home_screen_v2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        :root {
+            --bg-main: #0b0c0e;
+            --bg-card: #15171b;
+            --bg-card-hover: #1e2025;
+            --primary-accent: #5e6ad2;
+            --primary-accent-hover: #4f5bb6;
+            --text-primary: #ececec;
+            --text-secondary: #94969a;
+            --text-tertiary: #5f6166;
+            --border-subtle: #2a2c32;
+            --status-critical: #d25e5e;
+            --status-success: #3fb950;
+            --status-warning: #d2995e;
+            --nav-bg: rgba(11, 12, 14, 0.95);
+        }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        body {
+            background-color: #f0f0f0;
+            font-family:
+                -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+                Arial, sans-serif;
+        }
 
-    <link rel="stylesheet" href="styles.css">
+        .iphone-frame {
+            width: 393px;
+            height: 852px;
+            background-color: var(--bg-main);
+            position: relative;
+            border-radius: 40px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-primary);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .glass-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-item.active {
+            color: var(--text-primary);
+        }
+
+        .nav-item.active iconify-icon {
+            color: var(--primary-accent);
+            filter: drop-shadow(0 0 8px rgba(94, 106, 210, 0.4));
+        }
+    </style>
 </head>
 
 <body>
-    <div class="app-container">
-
-        <!-- Header -->
-        <header class="header">
-            <div class="header-left">
-                <div class="brand-icon">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13 3L4 14H12L11 21L20 10H12L13 3Z" fill="url(#bolt-gradient)"
-                            stroke="url(#bolt-gradient)" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <defs>
-                            <linearGradient id="bolt-gradient" x1="4" y1="3" x2="20" y2="21"
-                                gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#A78BFA" />
-                                <stop offset="1" stop-color="#7C3AED" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-                <div class="brand-text">
-                    <span class="welcome-text">WELCOME BACK</span>
-                    <h1 class="brand-name">Cramit<span class="accent-dot">.</span></h1>
-                </div>
-            </div>
-            <div class="streak-badge">
-                <span class="streak-icon">🔥</span>
-                <span class="streak-count">12 Days</span>
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="main-content">
-
-            <!-- Recommended Now Section -->
-            <section class="section">
-                <span class="section-label">RECOMMENDED NOW</span>
-
-                <!-- Hero Card -->
-                <div class="hero-card" id="heroCard">
-                    <div class="hero-content">
-                        <span class="retention-badge">
-                            <span class="badge-dot"></span>
-                            CRITICAL RETENTION
-                        </span>
-
-                        <h2 class="hero-title">Physics</h2>
-                        <p class="hero-subtitle">Electrostatics & Current</p>
-
-                        <div class="hero-stats">
-                            <div class="stat">
-                                <span class="stat-value">15</span>
-                                <span class="stat-label">REVIEWS</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">~8m</span>
-                                <span class="stat-label">TIME</span>
-                            </div>
-                        </div>
-
-                        <button class="start-btn" onclick="startSession('physics')">
-                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M8 5v14l11-7z" />
-                            </svg>
-                            Start Physics
-                        </button>
-                    </div>
-
-                    <!-- Atom Decoration -->
-                    <div class="atom-decoration">
-                        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Orbits -->
-                            <ellipse cx="60" cy="60" rx="50" ry="20" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"
-                                transform="rotate(-30 60 60)" />
-                            <ellipse cx="60" cy="60" rx="50" ry="20" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"
-                                transform="rotate(30 60 60)" />
-                            <ellipse cx="60" cy="60" rx="50" ry="20" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"
-                                transform="rotate(90 60 60)" />
-                            <!-- Nucleus -->
-                            <circle cx="60" cy="60" r="8" fill="rgba(255,255,255,0.2)" />
-                            <!-- Electrons -->
-                            <circle cx="60" cy="10" r="4" fill="rgba(255,255,255,0.4)" class="electron electron-1" />
-                            <circle cx="100" cy="80" r="4" fill="rgba(255,255,255,0.4)" class="electron electron-2" />
-                            <circle cx="20" cy="80" r="4" fill="rgba(255,255,255,0.4)" class="electron electron-3" />
-                        </svg>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Analytics / Propaganda: Recall Probability -->
-            <section class="section">
-                <div class="analytics-card">
-                    <div class="analytics-bg-glow"></div>
-
-                    <div class="analytics-header">
-                        <div>
-                            <p class="analytics-label">EXAM READINESS</p>
-                            <h3 class="analytics-value">82% <span class="analytics-value-sub">Recall Probability</span>
-                            </h3>
-                        </div>
-                        <div class="analytics-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                <path d="M18 15l-6-6-6 6" />
-                            </svg>
-                            <span>+4%</span>
-                        </div>
-                    </div>
-
-                    <!-- Progress Bar -->
-                    <div class="progress-container">
-                        <div class="progress-bar" style="width: 82%;">
-                            <div class="progress-shimmer"></div>
-                        </div>
-                    </div>
-
-                    <p class="analytics-footer">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                        Trending to hit <strong>90%</strong> by Friday
+    <!-- #iphone-frame_home -->
+    <div class="iphone-frame">
+        <!-- #scrollable-content_002 -->
+        <div class="flex-1 overflow-y-auto no-scrollbar px-5 pb-24">
+            <!-- #header-section_001 -->
+            <header class="flex items-center justify-between px-1 pt-12 pb-4">
+                <div class="flex flex-col">
+                    <h1 class="text-xl font-bold tracking-tight text-[var(--text-primary)]">
+                        <span class="text-[var(--primary-accent)]">✦</span> Cramit.
+                    </h1>
+                    <p class="text-xs text-[var(--text-secondary)] mt-0.5">
+                        Ready to revise, Arjun?
                     </p>
                 </div>
+                <div
+                    class="flex items-center gap-1.5 bg-[var(--bg-card)] border border-[var(--border-subtle)] px-3 py-1.5 rounded-full">
+                    <iconify-icon class="text-[var(--status-warning)] text-lg" icon="ph:fire-fill"></iconify-icon>
+                    <span class="text-sm font-semibold">12 Days</span>
+                </div>
+            </header>
+            <!-- /#header-section_001 -->
+            <!-- #primary-recommendation_003 -->
+            <section class="mt-4">
+                <div class="flex justify-between items-baseline mb-3">
+                    <h2 class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide">
+                        Recommended Now
+                    </h2>
+                </div>
+                <!-- #main-card_004 -->
+                <div class="glass-panel rounded-3xl p-6 relative overflow-hidden group">
+                    <div
+                        class="absolute -right-10 -top-10 w-40 h-40 bg-[var(--primary-accent)] opacity-5 blur-3xl rounded-full pointer-events-none">
+                    </div>
+                    <div class="flex items-center gap-2 mb-5">
+                        <span
+                            class="bg-[#2D2B4A] text-[#8E96FF] text-[10px] font-bold px-2 py-1 rounded-md border border-[#3E3C66] tracking-wide uppercase">Critical
+                            Retention</span><span
+                            class="text-[10px] text-[var(--text-tertiary)] flex items-center gap-1"><iconify-icon
+                                icon="ph:brain"></iconify-icon> High
+                            Priority</span>
+                    </div>
+                    <div class="mb-6 flex items-start justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-1">
+                                <h3 class="text-3xl font-bold text-white tracking-tight">
+                                    Physics
+                                </h3>
+                            </div>
+                            <p class="text-[var(--text-secondary)] text-sm">
+                                Electrostatics &amp; Current Electricity
+                            </p>
+                        </div>
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-[var(--primary-accent)]/10 border border-[var(--primary-accent)]/20 flex items-center justify-center text-[var(--primary-accent)]">
+                            <iconify-icon class="text-3xl" icon="ph:atom-fill"></iconify-icon>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6 mb-6">
+                        <div class="flex flex-col">
+                            <span
+                                class="text-[var(--text-tertiary)] text-[10px] font-semibold uppercase">Reviews</span><span
+                                class="text-lg font-medium text-white flex items-center gap-1"><iconify-icon
+                                    class="text-[var(--primary-accent)] text-sm" icon="ph:cards-fill"></iconify-icon>
+                                15</span>
+                        </div>
+                        <div class="w-px h-8 bg-[var(--border-subtle)]"></div>
+                        <div class="flex flex-col">
+                            <span class="text-[var(--text-tertiary)] text-[10px] font-semibold uppercase">Est.
+                                Time</span><span
+                                class="text-lg font-medium text-white flex items-center gap-1"><iconify-icon
+                                    class="text-[var(--primary-accent)] text-sm" icon="ph:clock-fill"></iconify-icon>
+                                ~8m</span>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full bg-[var(--primary-accent)] hover:bg-[var(--primary-accent-hover)] active:scale-[0.98] transition-all text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-[#5E6AD2]/20">
+                        <iconify-icon icon="ph:play-fill"></iconify-icon> Start Revision
+                    </button>
+                </div>
+                <!-- /#main-card_004 -->
             </section>
-
-            <!-- Your Decks Section -->
-            <section class="section decks-section">
-                <span class="section-label">YOUR DECKS</span>
-
-                <div class="decks-grid">
-                    <!-- Chemistry Deck -->
-                    <div class="deck-card" onclick="openDeck('chemistry')">
-                        <div class="deck-icon chemistry-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M9 3v6l-4 8c-.7 1.3.2 3 1.7 3h10.6c1.5 0 2.4-1.7 1.7-3l-4-8V3"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M9 3h6" stroke-linecap="round" />
-                                <circle cx="10" cy="15" r="1" fill="currentColor" />
-                                <circle cx="14" cy="13" r="1" fill="currentColor" />
-                                <circle cx="12" cy="16" r="1" fill="currentColor" />
-                            </svg>
+            <!-- /#primary-recommendation_003 --><!-- #secondary-queues_005 -->
+            <section class="mt-8">
+                <h2 class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-3">
+                    Other Subject Queues
+                </h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-panel rounded-2xl p-4 active:scale-[0.98] transition-transform">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-[#1A1F1C] flex items-center justify-center text-[#4CD964] mb-3 border border-[#232925]">
+                            <iconify-icon icon="ph:flask-fill"></iconify-icon>
                         </div>
-                        <div class="deck-info">
-                            <h3 class="deck-name">Chemistry</h3>
-                            <span class="deck-status caught-up">All Caught Up</span>
+                        <h4 class="font-semibold text-base mb-1">Chemistry</h4>
+                        <div class="flex items-center justify-between mt-3">
+                            <span class="text-xs text-[var(--text-secondary)]">22 Due</span><span
+                                class="text-xs font-mono text-[var(--text-tertiary)]">~12m</span>
                         </div>
-                        <div class="deck-arrow">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 18l6-6-6-6" />
-                            </svg>
+                        <button
+                            class="w-full mt-3 bg-[var(--border-subtle)] h-8 rounded-lg text-xs font-medium text-[var(--text-secondary)] hover:text-white transition-colors">
+                            Revise
+                        </button>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-4 active:scale-[0.98] transition-transform">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-[#1F1A1B] flex items-center justify-center text-[#FF5F57] mb-3 border border-[#2E2324]">
+                            <iconify-icon icon="ph:function-fill"></iconify-icon>
+                        </div>
+                        <h4 class="font-semibold text-base mb-1">Maths</h4>
+                        <div class="flex items-center justify-between mt-3">
+                            <span class="text-xs text-[var(--text-tertiary)]">Waitlist</span><span
+                                class="text-xs font-mono text-[var(--status-success)]">Done</span>
+                        </div>
+                        <button
+                            class="w-full mt-3 bg-[var(--border-subtle)] h-8 rounded-lg text-xs font-medium text-[var(--text-tertiary)] cursor-not-allowed opacity-50">
+                            Caught Up
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- /#secondary-queues_005 --><!-- #stats-heatmap-combo_006 -->
+            <section class="mt-8">
+                <h2 class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-3">
+                    Today's Activity
+                </h2>
+                <div class="glass-panel rounded-2xl p-5 mb-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex flex-col">
+                            <span class="text-2xl font-bold text-white">42/50</span>
+                            <span
+                                class="text-[10px] uppercase font-semibold text-[var(--text-tertiary)] tracking-wider">Daily
+                                Goal</span>
+                        </div>
+                        <div class="flex gap-1 items-end h-10">
+                            <div class="w-2 bg-[var(--border-subtle)] rounded-t-sm h-[40%]"></div>
+                            <div class="w-2 bg-[var(--border-subtle)] rounded-t-sm h-[60%]"></div>
+                            <div class="w-2 bg-[var(--primary-accent)] opacity-40 rounded-t-sm h-[30%]"></div>
+                            <div class="w-2 bg-[var(--primary-accent)] opacity-60 rounded-t-sm h-[80%]"></div>
+                            <div
+                                class="w-2 bg-[var(--primary-accent)] rounded-t-sm h-[100%] shadow-[0_0_8px_rgba(94,106,210,0.3)]">
+                            </div>
+                            <div class="w-2 bg-[var(--primary-accent)] opacity-50 rounded-t-sm h-[50%]"></div>
+                            <div
+                                class="w-2 bg-[var(--border-subtle)] rounded-t-sm h-[20%] border-b border-[var(--primary-accent)]">
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Mathematics Deck -->
-                    <div class="deck-card" onclick="openDeck('mathematics')">
-                        <div class="deck-icon math-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="4" y="4" width="16" height="16" rx="2" stroke-linecap="round" />
-                                <path d="M8 8h2v2H8zM14 8h2v2h-2zM8 14h2v2H8zM14 14h2v2h-2z" fill="currentColor" />
-                            </svg>
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-[var(--border-subtle)]">
+                        <div class="flex flex-col">
+                            <span
+                                class="text-xs font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-1">Due
+                                Now</span>
+                            <span class="text-lg font-bold text-[var(--status-warning)]">37 Cards</span>
                         </div>
-                        <div class="deck-info">
-                            <h3 class="deck-name">Mathematics</h3>
-                            <span class="deck-status has-due">22 Due</span>
-                        </div>
-                        <div class="deck-arrow">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 18l6-6-6-6" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <!-- Biology Deck -->
-                    <div class="deck-card full-width" onclick="openDeck('biology')">
-                        <div class="deck-icon biology-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path
-                                    d="M12 2C8 2 6 6 6 10c0 3 1.5 5 3 6v4a2 2 0 002 2h2a2 2 0 002-2v-4c1.5-1 3-3 3-6 0-4-2-8-6-8z"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M9 18h6" stroke-linecap="round" />
-                            </svg>
-                        </div>
-                        <div class="deck-info">
-                            <h3 class="deck-name">Biology</h3>
+                        <div class="flex flex-col text-right">
+                            <span
+                                class="text-xs font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-1">Backlog</span>
+                            <span class="text-lg font-bold text-[var(--status-critical)]">5 Topics</span>
                         </div>
                     </div>
                 </div>
             </section>
-        </main>
+            <!-- /#stats-heatmap-combo_006 -->
+        </div>
+        <!-- /#scrollable-content_002 --><!-- #refined-nav_007 -->
+        <!-- #bottom-nav_011 -->
+        <nav
+            class="absolute bottom-0 left-0 right-0 bg-[var(--nav-bg)] backdrop-blur-xl border-t border-[var(--border-subtle)] h-[88px] flex items-start justify-between px-8 z-50">
 
-        <!-- Bottom Navigation -->
-        <nav class="bottom-nav">
-            <button class="nav-item" onclick="switchTab('home')">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-                </svg>
-                <span>HOME</span>
-            </button>
-            <button class="nav-item active" onclick="switchTab('explore')">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z" />
-                </svg>
-                <span>EXPLORE</span>
-            </button>
-            <button class="nav-item" onclick="switchTab('stats')">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 6v6l4 2" />
-                </svg>
-                <span>STATS</span>
-            </button>
+            <!-- #nav-item-library_012 -->
+            <a href="SCREENSEXXPORT/screens/REFERCENCE/library_builder_initial.html"
+                class="flex flex-col items-center gap-1 mt-3 w-16 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors">
+                <iconify-icon class="text-2xl" icon="ph:books"></iconify-icon>
+                <span class="text-[10px] font-medium">Library</span>
+            </a>
+            <!-- /#nav-item-library_012 -->
+
+            <!-- #nav-item-home_013 (Center & Raised) -->
+            <a href="index.html" class="flex flex-col items-center justify-center -mt-6 cursor-pointer">
+                <div
+                    class="w-14 h-14 bg-[var(--primary-accent)] rounded-2xl flex items-center justify-center shadow-lg shadow-[var(--primary-accent)]/30 transform hover:-translate-y-1 transition-transform">
+                    <iconify-icon class="text-2xl text-white" icon="ph:house-fill"></iconify-icon>
+                </div>
+                <span class="text-[10px] font-bold text-[var(--text-primary)] mt-1.5">Home</span>
+            </a>
+            <!-- /#nav-item-home_013 -->
+
+            <!-- #nav-item-stats_014 -->
+            <a href="#"
+                class="flex flex-col items-center gap-1 mt-3 w-16 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors">
+                <iconify-icon class="text-2xl" icon="ph:chart-pie-slice"></iconify-icon>
+                <span class="text-[10px] font-medium">Stats</span>
+            </a>
+            <!-- /#nav-item-stats_014 -->
         </nav>
+        <!-- /#bottom-nav_011 -->
+        <!-- /#refined-nav_007 -->
     </div>
-
-    <script src="app.js"></script>
+    <!-- /#iphone-frame_home -->
 </body>
 
 </html>

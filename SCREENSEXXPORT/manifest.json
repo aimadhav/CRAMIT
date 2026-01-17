@@ -1,0 +1,62 @@
+{
+  "name": "Smart Revision Daily",
+  "exportedAt": "2026-01-17T10:11:01.032Z",
+  "screenCount": 11,
+  "screens": [
+    {
+      "id": "skeleton-home_screen_redesign-1768637470933",
+      "name": "home_screen_redesign",
+      "file": "screens/home_screen_redesign.html"
+    },
+    {
+      "id": "skeleton-home_screen_v2-1768637745031",
+      "name": "home_screen_v2",
+      "file": "screens/home_screen_v2.html"
+    },
+    {
+      "id": "skeleton-library_screen-1768637769915",
+      "name": "library_screen",
+      "file": "screens/library_screen.html"
+    },
+    {
+      "id": "skeleton-library_modal_screen-1768637791196",
+      "name": "library_modal_screen",
+      "file": "screens/library_modal_screen.html"
+    },
+    {
+      "id": "skeleton-library_screen_v2-1768638103124",
+      "name": "library_screen_v2",
+      "file": "screens/library_screen_v2.html"
+    },
+    {
+      "id": "skeleton-library_screen_v3_minimal-1768638328504",
+      "name": "library_screen_v3_minimal",
+      "file": "screens/library_screen_v3_minimal.html"
+    },
+    {
+      "id": "skeleton-library_screen_v4_balanced-1768638425581",
+      "name": "library_screen_v4_balanced",
+      "file": "screens/library_screen_v4_balanced.html"
+    },
+    {
+      "id": "skeleton-library_cram_list-1768638721009",
+      "name": "library_cram_list",
+      "file": "screens/library_cram_list.html"
+    },
+    {
+      "id": "skeleton-library_cram_modal-1768638744173",
+      "name": "library_cram_modal",
+      "file": "screens/library_cram_modal.html"
+    },
+    {
+      "id": "skeleton-library_builder_initial-1768639106231",
+      "name": "library_builder_initial",
+      "file": "screens/library_builder_initial.html"
+    },
+    {
+      "id": "skeleton-library_builder_ready-1768639128052",
+      "name": "library_builder_ready",
+      "file": "screens/library_builder_ready.html"
+    }
+  ]
+}
